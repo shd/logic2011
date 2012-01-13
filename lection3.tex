@@ -1,0 +1,257 @@
+\section{Теорема о дедукции}
+
+Соглашение об обозначениях. Будем обозначать буквами 
+$\Gamma, \Delta, \Sigma$ списки формул (возможно, пустые).
+
+\begin{definition}{Вывод из допущений.}
+Пусть $\Gamma$ -- некоторый список высказываний, а $\alpha$ --- 
+некоторе высказывание в исчислении высказываний $\langle{}L,A,R\rangle$. 
+Тогда мы будем говорить, что формула $\alpha$ выводится из $\Gamma$ (и записывать
+это как $\Gamma \vdash \alpha$), если существует доказательство формулы 
+в исчислении $\langle{}L, A_1, R\rangle$, где $A_1$ -- 
+это $A$ с добавленными формулами из $\Gamma$. Элементы $\Gamma$ мы будем называть 
+допущениями, предположениями или гипотезами. 
+\end{definition}
+
+Важно отметить, что поскольку речь идет о дополнительных предположениях, 
+то тут говорят уже не о доказательстве, а о выводе. И, соответственно,
+о выводимости вместо доказуемости.
+
+Очевидно, что если $\Gamma$ --- пустой список, то тогда 
+$\Gamma \vdash \alpha$ соответствует $\vdash \alpha$.
+
+По стилю записи такая конструкция напоминает импликацию, сейчас мы покажем, 
+что между этой конструкцией и импликацией действительно есть связь.
+
+\begin{theorem}
+Пусть справедливо $\Gamma \vdash \alpha \rightarrow \beta$. 
+Тогда также справедливо, что $\Gamma, \alpha \vdash \beta$.
+\end{theorem}
+
+\begin{proof} Для получения требуемого вывода возьмем вывод 
+формулы $\alpha \rightarrow \beta$, то есть некоторую последовательность 
+формул $\delta_1 \dots \delta_{m-1}; \alpha \rightarrow \beta$.
+Добавим к выводу 2 формулы:
+
+\begin{tabular}{lll}
+$(m+1)$ & $\alpha$ & <<Свежедобавленная>> аксиома \\
+$(m+2)$ & $\beta$ & M.P. $m$, $m+1$
+\end{tabular}
+\end{proof}
+
+Теперь докажем обратное.
+
+\begin{lemma}
+$\vdash \alpha \rightarrow \alpha$
+\end{lemma}
+
+\begin{proof}:
+
+
+\begin{tabular}{lll}
+(1) & $\alpha \rightarrow (\alpha \rightarrow \alpha)$&Сх. акс. 1\\
+(2) & $(\alpha \rightarrow (\alpha \rightarrow \alpha)) \rightarrow 
+  (\alpha \rightarrow ((\alpha \rightarrow \alpha) \rightarrow \alpha)) \rightarrow
+  (\alpha \rightarrow \alpha)$&Сх. акс. 2\\
+(3) & $(\alpha \rightarrow ((\alpha \rightarrow \alpha) \rightarrow \alpha)) \rightarrow
+  (\alpha \rightarrow \alpha)$&M.P. 1,2\\
+(4) & $(\alpha \rightarrow ((\alpha \rightarrow \alpha) \rightarrow \alpha))$ & Сх. акс. 1\\
+(5) & $\alpha \rightarrow \alpha$ & M.P. 4,3\\
+\end{tabular}
+\end{proof}
+
+\begin{theorem}{Теорема о дедукции}
+Пусть справедливо $\Gamma, \alpha \vdash \beta$. 
+Тогда также справедливо $\Gamma \vdash \alpha \rightarrow \beta$.
+\end{theorem}
+
+\begin{proof} 
+Нам необходимо построить вывод утверждения 
+$\Gamma \vdash \alpha \rightarrow \beta$ по имеющемуся выводу 
+$\delta_1 \dots \delta_{m-1}, \beta$.
+Мы поступим так: сперва набросаем план вывода -- разместим по тексту 
+<<ключевые>> формулы, которые потом дополним до полноценного вывода 
+промежуточными формулами. Формулы в плане занумеруем через 10,
+чтобы иметь возможность вставлять дополнительные утверждения посередине.
+
+План вывода будет такой:
+
+\begin{tabular}{ll}
+$(10)$ & $\Gamma \vdash \alpha \rightarrow \delta_1$\\
+\dots\\
+$(10m - 10)$ & $\Gamma \vdash \alpha \rightarrow \delta_{m-1}$\\
+$(10m)$ & $\Gamma \vdash \alpha \rightarrow \beta$
+\end{tabular}
+
+Теперь надо дополнить его до полноценного вывода. Будем рассматривать
+формулы подряд и перед каждой формулой добавлять некоторое количество
+формул, обосновывающих соответствующий шаг доказательства. 
+Рассмотрим формулу номер $i$. Возможны следующие варианты:
+
+\begin{enumerate}
+\item $\delta_i$ --- это аксиома или предположение, входящее в $\Gamma$. 
+Тогда перед этой формулой вставим 
+формулы $\delta_i$ и $\delta_i \rightarrow (\alpha \rightarrow \delta_i)$, 
+и окажется, что $i$-я формула выводится из предыдущих двух формул
+путем применения правила Modus Ponens.
+
+\item $\delta_i$ совпадает с $\alpha$. Тогда мы вставим перед 
+ней 4 первые формулы из леммы, и $\delta_i \rightarrow \alpha$ будет получаться
+по правилу Modus Ponens.
+
+\item $\delta_i$ выводится по правилу Modus Ponens из каких-то других
+утверждений $\delta_j$ и $\delta_k$ (которое есть 
+$\delta_j \rightarrow \delta_i$), где $j,k < i$.
+Покажем, что $\alpha \rightarrow \delta_i$ тоже может быть выведена
+из утверждений $\alpha \rightarrow \delta_j$ и 
+$\alpha \rightarrow (\delta_j \rightarrow \delta_i)$.
+
+Для этого добавим два высказывания:
+
+\begin{tabular}{lll}
+$(i-6)$ & $(\alpha \rightarrow \delta_i) \rightarrow ((\alpha \rightarrow (\delta_j \rightarrow \delta_i)) \rightarrow (\alpha \rightarrow \delta_i))$ & Сх. акс. 2\\
+$(i-3)$ & $((\alpha \rightarrow (\delta_j \rightarrow \delta_i)) \rightarrow (\alpha \rightarrow \delta_i))$ & M.P. из $j$ и $i-6$\\
+\end{tabular}
+
+\end{enumerate}
+\end{proof}
+
+По аналогии мы можем рассмотреть отношение \emph{следования}.
+Будем говорить, что высказывание $\alpha$ следует из высказываний $\Gamma$,
+если при любой оценке пропозициональных переменных, входящих в высказывания 
+$\Gamma$ и $\alpha$, на которых все высказывания из $\Gamma$ истинны, 
+$\alpha$ также истинно.
+Записывать, что $\alpha$ следует из $\Gamma$, будем так: $\Gamma \models \alpha$.
+
+\section{Теорема о полноте исчисления высказываний}
+
+\begin{lemma}
+Если $\Gamma \vdash \alpha$, то $\Gamma, \gamma \vdash \alpha$. 
+Если $\Gamma_1, \Gamma_2 \vdash \alpha$, то $\Gamma_2, \Gamma_1 \vdash \alpha$. 
+Аналогично для следствия.
+\end{lemma}
+
+\begin{proof}Упражнение.\end{proof}
+
+Возьмем некоторую связку исчисления высказываний, например конъюнкцию: $A \& B$.
+Построим для нее таблицу истинности. По каждой строчке построим утверждение,
+в котором отрицания появляются там, где в таблице истинности находится \emph{Л}:
+
+\begin{tabular}{cccc}
+$A$ & $B$ & $A \& B$ & утверждение\\
+\hline
+Л & Л & Л & $\neg A, \neg B \vdash \neg (A \& B)$\\
+Л & И & Л & $\neg A, B \vdash \neg (A \& B)$\\
+И & Л & Л & $A, \neg B \vdash \neg (A \& B)$\\
+И & И & И & $A, B \vdash A \& B$
+\end{tabular}
+
+\begin{lemma}
+Так построенные по таблицам истинности утверждения верны.
+\end{lemma}
+\begin{proof} Упражнение.
+\end{proof}
+
+\begin{lemma}{Правило контрапозиции.}\label{contraposition}Каковы бы ни были формулы $\alpha$ и $\beta$, справедливо, что 
+$\vdash (\alpha \rightarrow \beta) \rightarrow (\neg\beta \rightarrow \neg\alpha)$
+\end{lemma}
+
+\begin{proof}
+Сперва докажем, что $\alpha \rightarrow \beta, \neg\beta \vdash \neg\alpha$.
+
+\begin{tabular}{lll}
+(1) & $(\alpha \rightarrow \beta) \rightarrow (\alpha \rightarrow \neg\beta) \rightarrow \neg\alpha$ & Сх. акс. 8\\
+(2) & $\alpha \rightarrow \beta$ & Допущение\\
+(3) & $(\alpha \rightarrow \neg\beta) \rightarrow \neg\alpha$ & M.P. 2,1\\
+(4) & $\neg\beta \rightarrow (\alpha \rightarrow \neg\beta)$ & Сх. акс. 1\\
+(5) & $\neg\beta$ & Допущение\\
+(6) & $\alpha \rightarrow \neg\beta$ & M.P. 5,4\\
+(7) & $\neg\alpha$ & M.P. 6,3
+\end{tabular}
+
+\begin{tabular}{lll}
+(1) & $\alpha \rightarrow \neg\neg\beta, \alpha \vdash \alpha \rightarrow \neg\neg\beta$
+\end{tabular}
+
+Тогда, применив 2 раза Теорему о дедукции, получим вывод требуемого утверждения.
+\end{proof}
+
+\begin{lemma}{Правило исключенного третьего.} Какова бы ни была формула $\alpha$,
+$\vdash \alpha\vee\neg\alpha$
+\end{lemma}
+\begin{proof}
+
+Доказательство проведем в 3 этапа.
+\begin{enumerate}
+\item Для начала покажем $\vdash \neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha$:
+
+\begin{tabular}{lll}
+(1) & $\alpha \rightarrow \alpha \vee \neg\alpha$ & Сх. акс. 5\\
+%    & доказательство из леммы \ref{contraposition} &\\
+(2) & $(\alpha \rightarrow \alpha \vee \neg\alpha) \rightarrow (\neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha)$ & по лемме \ref{contraposition}\\
+(3) & $\neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha$ & M.P. 1,2
+\end{tabular}
+
+\item
+Доказательство $\vdash \neg(\alpha\vee\neg\alpha) \rightarrow \alpha$ чуть сложнее:
+
+\begin{tabular}{lll}
+(1) & $\neg\alpha \rightarrow \alpha \vee \neg\alpha$ & Сх. акс. 6\\
+%    & доказательство из леммы \ref{contraposition} & \\
+(2) & $(\neg\alpha \rightarrow \alpha\vee\neg\alpha) \rightarrow (\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha)$ & по лемме \ref{contraposition}\\
+(3) & $\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha$ & M.P. 1,2\\
+\end{tabular}
+
+Применив обратную теорему о дедукции, получим: $\neg(\alpha\vee\neg\alpha) \vdash \neg\neg\alpha$. Далее,
+в данном допущении, построим следующий вывод:
+
+\begin{tabular}{lll}
+(1) & $\neg\neg\alpha \rightarrow \alpha$ & Сх. акс. 10\\
+(2) & $\neg\neg\alpha $ & Доказуемо при допущении $\neg(\alpha\vee\neg\alpha)$ \\
+(3) & $\alpha $ & M.P. 2,1
+\end{tabular}
+
+И по теореме о дедукции из данного вывода мы можем получить доказательство
+утверждения $\vdash \neg(\alpha\vee\neg\alpha) \rightarrow \alpha$.
+
+\item
+Теперь докажем все вместе:
+
+\begin{tabular}{lll}
+%(1) & $\alpha \rightarrow \alpha \vee \neg\alpha$ & Сх. акс. 5\\
+%    & доказательство из леммы \ref{contraposition} & 
+%(2) & $(\alpha \rightarrow \alpha \vee \neg\alpha) \rightarrow (\neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha)$ & по лемме \ref{contraposition}\\
+%    & \dots сюда вставим доказательство из пункта 1 \dots\\
+(1) & $\neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha$ & по пункту 1\\
+%(4) & $\neg\alpha \rightarrow \alpha \vee \neg\alpha$ & Сх. акс. 6\\
+%    & доказательство из леммы \ref{contraposition} & \\
+%(5) & $(\neg\alpha \rightarrow \alpha\vee\neg\alpha) \rightarrow (\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha) & по лемме \ref{contraposition}\\
+%(2) & $\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha$ \\
+%(7) & $(\neg\neg\alpha \rightarrow \alpha) \rightarrow \neg(\alpha\vee\neg\alpha) \rightarrow (\neg\neg\alpha \rightarrow \alpha)$ & Сх. акс. 1\\
+%(8) & $(\neg\neg\alpha \rightarrow \alpha) & Сх. акс. 10\\
+%(9) & $\neg(\alpha\vee\neg\alpha) \rightarrow (\neg\neg\alpha \rightarrow \alpha)$ & M.P. 8,7\\
+%(10)& $(\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha) \rightarrow (\neg(\alpha\vee\neg\alpha) \rightarrow (\neg\neg\alpha \rightarrow \alpha)) \rightarrow \neg(\alpha\vee\neg\alpha \rightarrow \alpha)$
+%(11) & $(\neg(\alpha\vee\neg\alpha) \rightarrow (\neg\neg\alpha \rightarrow \alpha)) \rightarrow \neg(\alpha\vee\neg\alpha \rightarrow \alpha)$ M.P. 6,10\\
+%(12) & $\neg(\alpha\vee\neg\alpha \rightarrow \alpha)$
+%    & по обратной т. к т. о дедукции из (6) можно получить &\\
+%    & $\neg(\alpha\vee\neg\alpha) \vdash \neg\neg\alhpa$ &\\
+%    & а затем, применив акс. (10), modus ponens и т. о дедукции: &\\
+%    & \dots сюда вставим доказательство из пункта 2 dots\\
+(2) & $\neg(\alpha\vee\neg\alpha) \rightarrow \alpha$& по пункту 2\\
+(3) & $(\neg(\alpha\vee\neg\alpha) \rightarrow \alpha) \rightarrow (\neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha) \rightarrow (\neg\neg(\alpha\vee\neg\alpha))$ & Сх. акс. 9\\
+(4) & $(\neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha) \rightarrow \neg\neg(\alpha\vee\neg\alpha)$ & M.P. 2,3\\
+(5) & $\neg\neg(\alpha\vee\neg\alpha)$ & M.P. 1,4\\
+(6) & $\neg\neg(\alpha\vee\neg\alpha) \rightarrow (\alpha\vee\neg\alpha)$ & Сх. акс. 10\\
+(7) & $\alpha\vee\neg\alpha$ & M.P. 5,6
+\end{tabular}
+\end{enumerate}
+
+\end{proof}
+
+\begin{theorem}
+Пусть справедливо $\models \alpha$. Тогда также справедливо, что $\vdash \alpha$.
+\end{theorem}
+
+\begin{proof}
+См. Стефан Клини, Математическая логика, М. <<Мир>>, 1973. Глава 1, параграф 12, стр. 61-64.
+\end{proof}
