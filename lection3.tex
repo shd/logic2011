@@ -169,9 +169,9 @@ $\vdash (\alpha \rightarrow \beta) \rightarrow (\neg\beta \rightarrow \neg\alpha
 (7) & $\neg\alpha$ & M.P. 6,3
 \end{tabular}
 
-\begin{tabular}{lll}
-(1) & $\alpha \rightarrow \neg\neg\beta, \alpha \vdash \alpha \rightarrow \neg\neg\beta$
-\end{tabular}
+%\begin{tabular}{lll}
+%(1) & $\alpha \rightarrow \neg\neg\beta, \alpha \vdash \alpha \rightarrow \neg\neg\beta$
+%\end{tabular}
 
 Тогда, применив 2 раза Теорему о дедукции, получим вывод требуемого утверждения.
 \end{proof}
@@ -186,7 +186,7 @@ $\vdash \alpha\vee\neg\alpha$
 \item Для начала покажем $\vdash \neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha$:
 
 \begin{tabular}{lll}
-(1) & $\alpha \rightarrow \alpha \vee \neg\alpha$ & Сх. акс. 5\\
+(1) & $\alpha \rightarrow \alpha \vee \neg\alpha$ & Сх. акс. 6\\
 %    & доказательство из леммы \ref{contraposition} &\\
 (2) & $(\alpha \rightarrow \alpha \vee \neg\alpha) \rightarrow (\neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha)$ & по лемме \ref{contraposition}\\
 (3) & $\neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha$ & M.P. 1,2
@@ -196,7 +196,7 @@ $\vdash \alpha\vee\neg\alpha$
 Доказательство $\vdash \neg(\alpha\vee\neg\alpha) \rightarrow \alpha$ чуть сложнее:
 
 \begin{tabular}{lll}
-(1) & $\neg\alpha \rightarrow \alpha \vee \neg\alpha$ & Сх. акс. 6\\
+(1) & $\neg\alpha \rightarrow \alpha \vee \neg\alpha$ & Сх. акс. 7\\
 %    & доказательство из леммы \ref{contraposition} & \\
 (2) & $(\neg\alpha \rightarrow \alpha\vee\neg\alpha) \rightarrow (\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha)$ & по лемме \ref{contraposition}\\
 (3) & $\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha$ & M.P. 1,2\\
