@@ -156,9 +156,120 @@ $\infer{\exists{x}(\psi) \rightarrow (\phi)}{(\psi) \rightarrow (\phi)}$
 2 новых правила вывода. Упражнение.
 \end{proof}
 
+\begin{lemma}\label{free_substitution}
+$\llbracket \psi \rrbracket^{x := \llbracket\theta\rrbracket} = \llbracket \psi[x := \theta] \rrbracket$,
+если $\theta$ свободна для подстановки в $\psi$ вместо $x$.
+\end{lemma}
+
+\begin{proof}
+Воспользуемся структурной индукцией по выражению $\psi$.
+
+База индукции. Пусть $\psi$ --- это предикат. Тогда из способа вычисления значения предикатов 
+очевидно, что
+$\llbracket P(\theta,y_1,\dots y_n) \rrbracket = \llbracket P(x,y_1,\dots y_n)\rrbracket^{x := \llbracket \theta \rrbracket}$.
+
+Переход индукции. Пусть $\psi$ составлено из одного или двух выражений, про которые
+утверждение уже доказано. Рассмотрим варианты:
+
+\begin{itemize}
+\item $\psi \equiv \alpha \rightarrow \beta$, $\psi \equiv \alpha \& \beta$, $\psi \equiv \alpha \vee \beta$ или
+$\psi \equiv \neg \alpha$. Рассмотрение всех этих случаев схоже, возьмем для примера конъюнкцию.
+
+%\begin{tabular}{ll}
+$\llbracket\alpha\&\beta\rrbracket^{x:=\llbracket\theta\rrbracket}
+=\llbracket\alpha\rrbracket^{x:=\llbracket\theta\rrbracket}\&\llbracket\beta\rrbracket^{x:=\llbracket\theta\rrbracket}
+=\llbracket\alpha[x := \theta]\rrbracket\&\llbracket\beta[x:=\theta]\rrbracket
+=\llbracket\alpha[x := \theta]\&\beta[x := \theta]\rrbracket = \llbracket(\alpha\&\beta)[x := \theta]\rrbracket$
+%\end{tabular}
+
+\item $\psi \equiv \forall y \alpha$ или $\psi \equiv \exists y \alpha$. Опять же, рассмотрение случаев
+аналогично. Покажем, что 
+$\llbracket \forall y \alpha \rrbracket^{x := \llbracket\theta\rrbracket} = \llbracket (\forall y \alpha)[x:=\theta] \rrbracket$.
+
+Без уменьшения общности можем предположить, что $x$ входит свободно в $\forall y\alpha$ --- иначе данная замена
+не оказывает влияние на вычисление результата, и равенство очевидно.
+
+Поскольку $\theta$ свободна для подстановки вместо $x$ в $\psi$, то, значит, 
+$y$ не входит свободно в $\theta$ (иначе свободный $y$ стал бы связанным при подстановке,
+а подстановки обязательно будут иметь место, раз $x$ входит свободно в $\forall y\alpha$).
+
+%Вычислим $\llbracket\theta\rrbracket=v_\theta$ в некоторой фиксированной оценке.
+%Если $\llbracket\forall y \alpha\rrbracket^{x := v_\theta} = \texttt{И}$, то не найдётся 
+%такого $v_y$, что $\llbracket\alpha\rrbracket^{x := v_\theta, y := v_y} = \texttt{Л}$. 
+
+По предположению индукции, $\llbracket\alpha\rrbracket^{x := \llbracket\theta\rrbracket} = 
+\llbracket\alpha[x:=\theta]\rrbracket$. И, более того,
+$\llbracket\alpha\rrbracket^{x := \llbracket\theta\rrbracket, y := v_y} = \llbracket\alpha[x:=\theta]\rrbracket^{y := v_y}$,
+поскольку вычисление оценки $\theta$ не зависит от значения переменной $y$.
+Значит, оценки полных формул с квантором также будут совпадать.
+\end{itemize}
+
+\end{proof}
+
 \begin{theorem}
 Исчисление предикатов корректно, т.е. любое доказуемое утверждение общезначимо.
 \end{theorem}
 
-\begin{proof}Упражнение.\end{proof}
+\begin{proof}
+Рассмотрим некоторое доказательство $\gamma_1, \dots \gamma_n$, и покажем, что
+каждое из утверждений в доказательстве является общезначимым. Этим мы покажем 
+утверждение теоремы.
 
+Рассмотрим какое-то утверждение $\gamma_i$. Оно либо является частным случаем
+какой-либо из схем аксиом, либо получено из предыдущих утверждений доказательства.
+путем применения правил вывода.
+
+Мы ограничимся рассмотрением только новых (по сравнению с исчислением высказываний)
+схем аксиом и правил, поскольку только в них доказательство будет отличаться
+от аналогичного для исчисления высказываний.
+
+Возможны следующие варианты:
+\begin{enumerate}
+\item $\gamma_i \equiv \forall{x}(\psi) \rightarrow (\psi[x := \theta])$ при 
+некоторых $x$ (имя переменной тоже может быть разным), $\psi$ и $\theta$. 
+Значит, нам необходимо показать, что при любых $x$, $\psi$ и $\theta$ 
+(естественно, таких, что $\theta$ свободна для подстановки вместо $x$ в $\psi$) 
+данное выражение будет истинным в любой оценке.
+
+Фиксируем некоторую оценку и докажем утверждение от противного. 
+Пусть это не так, и 
+$\llbracket \forall{x}(\psi)\rightarrow(\psi[x := \theta])\rrbracket = \texttt{Л}$.
+Тогда неизбежно, что $\llbracket \forall{x}(\psi) \rrbracket = \texttt{И}$, но
+$\llbracket \psi[x:=\theta] \rrbracket = \texttt{Л}$ (поскольку при остальных значениях
+подвыражений импликация будет истинна). 
+
+Пусть в данной оценке $\llbracket\theta\rrbracket=v_\theta$. 
+По лемме \ref{free_substitution} верно, что 
+$\llbracket \psi[x:=\theta] \rrbracket = \llbracket\psi\rrbracket^{x:=v_\theta}$,
+причём, поскольку $\llbracket \psi[x:=\theta] \rrbracket = \texttt{Л}$, то
+$\llbracket\psi\rrbracket^{x:=v_\theta} = \texttt{Л}$.
+Но тогда $\llbracket \forall{x}(\psi) \rrbracket = \texttt{И}$ означает, что 
+при любом $v_x \in D$ будет выполнено $\llbracket \psi \rrbracket^{x := v_x} = \texttt{И}$. 
+Противоречие.
+
+\item $\gamma_i \equiv (\psi[x := \theta]) \rightarrow \exists{x}(\psi)$ при некоторых
+$x$, $\psi$ и $\theta$. Рассмотрение аналогично предыдущему пункту: заметим, что импликация
+опровергается только если $\llbracket \exists{x}(\psi) \rrbracket = \texttt{Л}$, но
+$\llbracket \psi[x:=\theta] \rrbracket = \texttt{И}$. По лемме 
+\ref{free_substitution} при вычислении оценки формулы мы можем отдельно вычислить
+$v_\theta = \llbracket\theta\rrbracket$, и показать, что 
+$\llbracket \psi[x:=\theta] \rrbracket = \llbracket\psi\rrbracket^{x:=v_\theta}$, что 
+гарантирует существование элемента в $D$, на котором формула $\psi$ истинна.
+
+\item $\gamma_i \equiv \phi \rightarrow \forall{x}\psi$ и существует такой $j < i$, что
+$\gamma_j \equiv \phi \rightarrow \psi$, при этом $x$ не входит свободно в $\phi$.
+
+Опять же, фиксируем некоторую оценку.
+Нам нужно показать, что $\forall{x}\psi$ не бывает ложным, если $\phi$ истинно.
+
+По предположению индукции мы знаем, что $\llbracket \phi \rightarrow \psi \rrbracket = \texttt{И}$.
+Пусть $\llbracket\forall{x}\psi\rrbracket = \texttt{Л}$. То есть, найдётся такой $v_x$ из $D$, что
+$\llbracket\forall{x}\psi\rrbracket^{x:=v_x} = \texttt{Л}$. 
+Но заметим, что $x$ не входит свободно в $\phi$. Значит, $\llbracket \phi \rrbracket^{x:=v_x} = \texttt{И}$.
+Значит, $\llbracket\phi \rightarrow \psi\rrbracket^{x:=v_x} = \texttt{Л}$. Противоречие с общезначимостью $\gamma_j$.
+
+\item Правило для квантора существования доказывается аналогично.
+
+\end{enumerate}
+
+\end{proof}

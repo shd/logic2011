@@ -397,9 +397,10 @@ $\beta_1, \beta_2, \beta_3$. Подставив всех возможных ис
 
 Пусть $\alpha_{k+1}$ получается по правилу Modus Ponens из $\alpha_p$ и 
 $\alpha_q$, причем $\alpha_q \equiv \alpha_p \rightarrow \alpha_{k+1}$.
-Тогда $\alpha_p [x_1, \dots x_n] = \texttt{И}$ и 
-$(\alpha_p \rightarrow \alpha_{k+1}) [x_1, \dots x_n] = \texttt{И}$.
-Из таблицы истинности импликации следует, что неизбежно $\alpha_{k+1} [x_1, \dots x_n] = \texttt{И}$.
+Тогда $\llbracket\alpha_p\rrbracket^{P_1 := x_1, \dots P_n:=x_n} = \texttt{И}$ и 
+$\llbracket\alpha_p \rightarrow \alpha_{k+1}\rrbracket^{P_1:=x_1, \dots P_n:=x_n} = \texttt{И}$.
+Из таблицы истинности импликации следует, что неизбежно 
+$\llbracket\alpha_{k+1}\rrbracket^{P_1:=x_1, \dots P_n:=x_n} = \texttt{И}$.
 
 \end{proof}
 
