@@ -1,4 +1,4 @@
-\section{Рекурсивные функции.}
+\section{Рекурсивные функции и отношения}
 
 Рассмотрим примитивы, из которых будем собирать выражения:
 
@@ -33,6 +33,23 @@
 \end{theorem}
 
 \begin{proof}Упражнение.\end{proof}
+
+\begin{definition}
+Если $R$ --- $n$-местное отношение, то его \emph{характеристической функцией}
+мы назовем функцию 
+
+$$C_R(x_1,\dots x_n,y) = \left\{\begin{array}{rl}
+    1, & \mbox{если $(x_1,\dots x_n) \in R$}\\
+    0, & \mbox{если $(x_1,\dots x_n) \notin R$}
+\end{array}\right.$$
+\end{definition}
+
+\begin{definition}
+Рекурсивным отношением называется отношение, характеристическая функция
+которого рекурсивна.
+\end{definition}
+
+\subsection{Рекурсивные, но не примитивно-рекурсивные функции}
 
 Интересен вопрос --- если столь сложные функции, как вычисление простых
 чисел, являются примитивно-рекурсивными, то не достаточно ли их будет
@@ -163,7 +180,7 @@ $$\alpha_{K-2}(max (g_1(\overrightarrow{x}), \dots g_m(\overrightarrow{x}))) \le
 Применив свойство из предыдущей леммы, мы можем заключить требуемое:
 $$\alpha_{K-2}^{max(\overrightarrow{x})+2}(max(\overrightarrow{x})) < \alpha_K(max(\overrightarrow{x}))$$
 
-Теперь рассмотрим примитив $R$: $p = R\langle g,h \rangle$,
+Теперь рассмотрим примитив $R$: $p = R\langle f,g \rangle$,
 причём $f: N^{n-1} \rightarrow N$, и $g: N^{n+1} \rightarrow N$,
 и для них уже найдены константы $K_1$ и $K_2$, соответственно.
 Тогда возьмем $K = max(K_1, K_2)+2$.
@@ -179,7 +196,7 @@ $$\le \alpha_{K-2}^{max(\overrightarrow{x},y)+2}(max(\overrightarrow{x},y)) <
 
 Покажем требуемое индукцией по $y$.
 База: $y = 0$. Тогда: $$p(\overrightarrow{x},0) = f(\overrightarrow{x}) \le 
-\alpha_{K_1}(max(\overrightarrow{x}) = \alpha_{K_1}(max(\overrightarrow{x},0)) \le 
+\alpha_{K_1}(max(\overrightarrow{x})) = \alpha_{K_1}(max(\overrightarrow{x},0)) \le 
 \alpha_{K-2}(max(\overrightarrow{x},0))$$
 
 Переход: пусть $p(\overrightarrow{x},y) \le \alpha^{y+1}_{K-2}(max(\overrightarrow{x},y))$.
@@ -207,7 +224,9 @@ $$= \alpha_{K_2}(\alpha^{y+1}_{K-2}(max(\overrightarrow{x},y)))
 однако нам также известно, что $A(N+1,N+1) > A(N,N+1)$.
 \end{proof}
 
-\section{Арифметические функции и отношения. Их выразимость в формальной арифметике.}
+\section{Арифметические отношения и функции. Их выразимость и представимость в формальной арифметике.}
+
+\subsection{Выразимость и представимость}
 
 Введем обозначение. Если в тексте вводится некоторая формула $\alpha(x_1, \dots x_n)$, то
 по умолчанию считается, что эта формула имеет минимум $n$ свободных переменных, с именами
@@ -266,14 +285,14 @@ $\overline{k_1}$ и $\overline{k_2}$ в $\alpha$, то формула будет
 $\alpha (\overline{k_1}, \dots \overline{k_{n+1}})$.
 \item Доказуемо $\exists ! b (\alpha (\overline{k_1}, \dots \overline{k_n}, b)$
 \end{enumerate}
-
-%Функция называется сильно представимой, если в свойстве 2 натуральные числа заменить на переменные:
-%$\exists ! b (\alpha (a_1, \dots a_n, b)$
 \end{definition} 
 
-%Очевидно, что сильно представимая функция также является представимой --- с помощью уже 
-%встречавшегося ранее трюка с введением квантора всеобщности, а потом с подстановкой 
-%конкретного терма вместо переменной мы можем подставить любые константы вместо переменных.
+%$$f(x) = \left\{\begin{array}{rl}
+%   \{x\}, & \mbox{если $P(x)$}\\
+%   \emptyset, & \mbox{если $\neg P(x).$}
+%\end{array}\right.
+
+\subsection{Представимость рекурсивных функций}
 
 \begin{theorem} Функции $Z$, $N$, $U^n_i$ являются представимыми. \end{theorem}
 \begin{proof}
@@ -375,5 +394,26 @@ $R(x_1, \dots x_{n+1}, a) := \exists b \exists c (\exists k (B (b,c,0,k) \& F (x
 как некоторая формула $F$. Тогда формула 
 $M (x_1, \dots x_n,y) := F(x_1, \dots x_n,y,0) \& \forall z (z < y \rightarrow \neg F (x_1, \dots x_n,z,0))$
 представит $\mu\langle{}f\rangle$.
+\end{proof}
 
+\begin{theorem}Всякое рекурсивное арифметическое отношение выразимо в формальной арифметике.\end{theorem}
+\begin{proof}Рассмотрим характеристическую функцию $C_R$ некоторого рекурсивного отношения $R$. Данная функция 
+(как любая другая рекурсивная функция) представима в формальной арифметике --- пусть
+ее представляет формула $\rho(x_1, \dots x_n, y)$. Тогда 
+формула $\rho (x_1, \dots x_n, \overline{1})$ выразит соответствующее отношение.
+
+В самом деле, если $(k_1,\dots k_n) \in R$ для некоторых $k_i$, то
+$\vdash \rho(\overline{k_1}, \dots \overline{k_n}, \overline{1})$.
+
+Обратно, пусть $(k_1,\dots k_n) \notin R$. Из представимости $C_R$ известно
+$$\vdash \exists ! y\rho(\overline{k_1}, \dots \overline{k_n}, y)$$
+то есть, в частности,
+$$\vdash \forall y_1 \forall y_2 (\rho(\overline{k_1}, \dots \overline{k_n}, y_1) \& \rho(\overline{k_1}, \dots \overline{k_n}, y_2) \rightarrow y_1 = y_2)$$
+что можно преобразовать в
+$$\vdash \rho(\overline{k_1}, \dots \overline{k_n}, 0) \rightarrow (\rho(\overline{k_1}, \dots \overline{k_n}, \overline{1}) \rightarrow \overline{1} = 0)$$
+Поскольку $\vdash \rho(\overline{k_1}, \dots \overline{k_n}, 0)$ доказуемо вследствие представимости $C_R$,
+то мы можем далее вывести
+$$\vdash \rho(\overline{k_1}, \dots \overline{k_n}, \overline{1}) \rightarrow \overline{1} = 0$$
+и, заметив, что $\vdash\neg \overline{1} = 0$, в итоге покажем требуемое для выразимости
+$$\vdash \neg\rho(\overline{k_1}, \dots \overline{k_n}, \overline{1})$$
 \end{proof}

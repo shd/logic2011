@@ -6,7 +6,7 @@ $\Gamma, \Delta, \Sigma, \Pi$ списки формул (возможно, пу�
 \begin{definition}{Вывод из допущений.}
 Пусть $\Gamma$ -- некоторый список высказываний, а $\alpha$ --- 
 некоторое высказывание. 
-Тогда мы будем говорить, что высказываение $\alpha$ \emph{выводимо} из $\Gamma$ 
+Тогда мы будем говорить, что высказывание $\alpha$ \emph{выводимо} из $\Gamma$ 
 (и записывать это как $\Gamma \vdash \alpha$), если существует такая 
 последовательность высказываний $\alpha_1, \alpha_2, \dots \alpha_{n-1}, \alpha$
 (называемая \emph{выводом} $\alpha$ из $\Gamma$), 
@@ -203,7 +203,7 @@ $\vdash (\alpha \rightarrow \beta) \rightarrow (\neg\beta \rightarrow \neg\alpha
 Сперва докажем, что $\alpha \rightarrow \beta, \neg\beta \vdash \neg\alpha$.
 
 \begin{tabular}{lll}
-(1) & $(\alpha \rightarrow \beta) \rightarrow (\alpha \rightarrow \neg\beta) \rightarrow \neg\alpha$ & Сх. акс. 8\\
+(1) & $(\alpha \rightarrow \beta) \rightarrow (\alpha \rightarrow \neg\beta) \rightarrow \neg\alpha$ & Сх. акс. 9\\
 (2) & $\alpha \rightarrow \beta$ & Допущение\\
 (3) & $(\alpha \rightarrow \neg\beta) \rightarrow \neg\alpha$ & M.P. 2,1\\
 (4) & $\neg\beta \rightarrow (\alpha \rightarrow \neg\beta)$ & Сх. акс. 1\\
