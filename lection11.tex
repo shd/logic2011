@@ -37,7 +37,7 @@ $\phi$ с единственным свободным аргументом $x$, 
 доказательства $\phi(\gq{\phi})$ --- доказательства 
 самоприменения $\phi$. 
 Это соотношение является выразимым в формальной арифметике с помощью следующей формулы:
-$$\omega_1(x,p) \equiv Free(x,\gq{x}) \with Proof (Sub(x,\gq{x},Num(x)),p)$$
+$$\omega_1(x,p) \equiv \mathit{Free}(x,\gq{x}) \with \mathit{Proof} (\mathit{Sub}(x,\gq{x},\mathit{Num}(x)),p)$$
 
 Рассмотрим формулу $\sigma \equiv \forall p \neg \omega_1(x,p)$ --- это некоторая формула
 с единственной свободной переменной $x$ --- и посмотрим, что произойдёт с её самоприменением:
@@ -239,39 +239,39 @@ $\neg \rho(\ogq{\rho})$ также недоказуемо, если арифме
 достаточно проверить это для какого-то конкретного $\phi$, пусть это будет
 $1=0$. Ясно, что $\neg 1=0$ доказуемо.
  Тогда для доказательства непротиворечивости арифметики нам достаточно
-доказать $\forall p (\neg Proof (\overline{\gq{1=0}}, p))$. Обозначим это утверждение
-за $Consis$.
+доказать $\forall p (\neg \mathit{Proof} (\overline{\gq{1=0}}, p))$. Обозначим это утверждение
+за $\mathit{Consis}$.
 
 \begin{theorem}{Вторая теорема Гёделя о неполноте арифметики.}
-Если арифметика непротиворечива, то в ней не существует доказательства $Consis$.
+Если арифметика непротиворечива, то в ней не существует доказательства $\mathit{Consis}$.
 \end{theorem}
 
 \begin{proof}
-Рассмотрим формулу $Consis \rightarrow \sigma(\overline{\gq\sigma})$.
+Рассмотрим формулу $\mathit{Consis} \rightarrow \sigma(\overline{\gq\sigma})$.
 Данная формула в точности соответствует условию первой части первой теоремы Гёделя 
 о неполноте арифметики: 
 если арифметика непротиворечива, то самоприменение формулы $\sigma$ истинно, т.е.
 недоказуемо; напомним, что $\sigma(x) \equiv \forall p \neg \omega_1 (x,p)$.
 
 Рассуждение, доказывающее теорему Гёделя, можно формализовать, получив доказательство
-данной импликации. Теперь, если у нас будет доказательство утверждения $Consis$,
+данной импликации. Теперь, если у нас будет доказательство утверждения $\mathit{Consis}$,
 то по правилу Modus Ponens мы также получаем доказательство утверждения 
 $\sigma (\gq\sigma)$, что невозможно по первой теореме Гёделя.
 \end{proof}
 
 В данном месте есть очень поучительный пример, показывающий важность 
 формализации, и существенность деталей, которые мы опустили в доказательстве
-второй теоремы о неполноте. В самом деле, вместо формулы $Consis$ мы могли бы 
+второй теоремы о неполноте. В самом деле, вместо формулы $\mathit{Consis}$ мы могли бы 
 попробовать рассмотреть формулу 
-$Proof1(a) := Proof (a,x) \with \neg(Proof (\gq{1=0},x))$
+$\mathit{Proof1}(a) := \mathit{Proof} (a,x) \with \neg(\mathit{Proof} (\gq{1=0},x))$
 и построить по ней формулу
-$Consis1 := \forall x \neg Proof1 (\gq{1=0},x)$ 
+$\mathit{Consis1} := \forall x \neg \mathit{Proof1} (\gq{1=0},x)$ 
 На первый взгляд, замена равноценна: действительно, 
-если арифметика непротиворечива, то тогда $Proof1$ ничем не отличается от $Proof$,
+если арифметика непротиворечива, то тогда $\mathit{Proof1}$ ничем не отличается от $\mathit{Proof}$,
 поскольку $1=0$ тогда действительно недоказуема. Если же арифметика противоречива,
-то $Consis1$ доказуема, как и любая другая формула.
+то $\mathit{Consis1}$ доказуема, как и любая другая формула.
 
-Однако, $Consis1$ легко доказать. Пусть $\pi(x) \equiv Proof(\gq{0=1},x)$, тогда:
+Однако, $\mathit{Consis1}$ легко доказать. Пусть $\pi(x) \equiv \mathit{Proof}(\gq{0=1},x)$, тогда:
 
 \begin{tabular}{lll}
 (1..n) & $\neg (\pi(x) \with \neg (\pi(x)))$ & Доказуемо в и.в.\\
@@ -285,55 +285,55 @@ $Consis1 := \forall x \neg Proof1 (\gq{1=0},x)$
 Получается, что мы здесь, продолжив рассуждение в соответствии со второй теоремой,
 можем сразу получить противоречие и показать противоречивость арифметики?
 На самом деле нет, поскольку мы некритично обобщили вторую теорему на 
-случай формулы $Consis1$, тогда как она существенно использует внутреннее устройство $Consis$. 
-У $Consis1$ ведь есть <<слепое пятно>> --- формула $1=0$, на которой его результат не вычисляется,
+случай формулы $\mathit{Consis1}$, тогда как она существенно использует внутреннее устройство $\mathit{Consis}$. 
+У $\mathit{Consis1}$ ведь есть <<слепое пятно>> --- формула $1=0$, на которой его результат не вычисляется,
 а постулируется, и это значительное отличие. 
 
-Чтобы абстрагироваться от конкретного вида $Consis$, Гильбертом и Бернайсом были
+Чтобы абстрагироваться от конкретного вида $\mathit{Consis}$, Гильбертом и Бернайсом были
 предложены следующие условия выводимости, позволяющие считать, что формула действительно
 выражает непротиворечивость арифметики. Мы приведем их в более позднем варианте,
 сформулированном Лёфом.
 
-Пусть $Consis \equiv \neg Provable (\gq{1=0})$. Тогда $Provable$ должно отвечать следующим
+Пусть $\mathit{Consis} \equiv \neg \mathit{Provable} (\gq{1=0})$. Тогда $\mathit{Provable}$ должно отвечать следующим
 свойствам:
 
 \begin{enumerate}
-\item $\vdash \alpha$ влечет $\vdash Provable(\gq{\alpha})$
-\item $\vdash Provable (\gq{\alpha}) \rightarrow Provable(\gq{Provable(\gq{\alpha})})$
-\item $\vdash Provable (\gq{\alpha\rightarrow \beta})\rightarrow Provable(\gq{\alpha}) \rightarrow Provable(\gq{\beta})$
+\item $\vdash \alpha$ влечет $\vdash \mathit{Provable}(\gq{\alpha})$
+\item $\vdash \mathit{Provable} (\gq{\alpha}) \rightarrow \mathit{Provable}(\gq{\mathit{Provable}(\gq{\alpha})})$
+\item $\vdash \mathit{Provable} (\gq{\alpha\rightarrow \beta})\rightarrow \mathit{Provable}(\gq{\alpha}) \rightarrow \mathit{Provable}(\gq{\beta})$
 \end{enumerate}
 
-Заметим, что в случае $Provable1(a) = \exists x (Proof (a,x) \with \neg Proof (\gq{1=0},x))$
+Заметим, что в случае $\mathit{Provable1}(a) = \exists x (\mathit{Proof} (a,x) \with \neg \mathit{Proof} (\gq{1=0},x))$
 у нас будут сложности с демонстрацией третьего правила. 
 Анализ таблицы истинности импликации (вместе с полнотой и.в.)
 указывает, что чтобы показать 
-$$\vdash Provable1 (\gq{2=0\rightarrow 1=0}) \rightarrow Provable1 (\gq{2=0}) \rightarrow Provable1 (\gq{1=0})$$
-нам надо показать $\vdash \neg Provable1 (\gq{2=0})$,
-поскольку $\vdash Provable1 (\gq{2=0\rightarrow 1=0})$ и $\vdash \neg Provable1 (\gq{1=0})$. 
+$$\vdash \mathit{Provable}1 (\gq{2=0\rightarrow 1=0}) \rightarrow \mathit{Provable1} (\gq{2=0}) \rightarrow \mathit{Provable1} (\gq{1=0})$$
+нам надо показать $\vdash \neg \mathit{Provable1} (\gq{2=0})$,
+поскольку $\vdash \mathit{Provable1} (\gq{2=0\rightarrow 1=0})$ и $\vdash \neg \mathit{Provable1} (\gq{1=0})$. 
 То есть, мы получим эту импликацию, только если покажем доказуемость непротиворечивости формальной арифметики
-(ведь $\vdash \neg Provable1 (\gq{2=0})$ --- это тоже вариант $Consis$).
+(ведь $\vdash \neg \mathit{Provable1} (\gq{2=0})$ --- это тоже вариант $\mathit{Consis}$).
 
-Если бы речь шла об обычной формуле $Provable$, мы бы решили вопрос следующим неформальным, но формализуемым
+Если бы речь шла об обычной формуле $\mathit{Provable}$, мы бы решили вопрос следующим неформальным, но формализуемым
 доказательством:
-если существует $x$, такой, что $Proof (\gq{2=0},x)$, 
-и существует $y$, что $Proof(\gq{2=0\rightarrow 1=0},y)$, 
-то выполнено и $Proof (\gq{1=0},x @ y @ \gq{1=0})$.
+если существует $x$, такой, что $\mathit{Proof} (\gq{2=0},x)$, 
+и существует $y$, что $\mathit{Proof}(\gq{2=0\rightarrow 1=0},y)$, 
+то выполнено и $\mathit{Proof} (\gq{1=0},x @ y @ \gq{1=0})$.
 
 %\begin{tabular}{lll}
-%(1) & $\exists x Proof(\gq{2=0},x)$ & Предположение 1\\
-%(2) & $\exists y Proof(\gq{2=0\rightarrow 1=0},y)$ & Предположение 2\\
-%(3..p) & $\exists x \exists y (Proof (\gq{2=0},x) \with Proof(\gq{2=0\rightarrow 1=0},y))$ & Доказуемо\\
-%(..) & Конкретное доказательство не привести, но оно существует по свойствам $Proof$ &\\
-%(p+1..k) & $ \exists x \exists y (Proof (\gq{2=0},x) \with Proof(\gq{2=0\rightarrow 1=0},y) \rightarrow Proof (\gq{1=0}, x @ y @ \gq{1=0}))$\\
-%(k+1..l) & $ \exists x \exists y (Proof (\gq{2=0},x) \with Proof(\gq{2=0\rightarrow 1=0},y) \rightarrow \exists p Proof (\gq{1=0}, p))$\\
-%(l+1..m) & $ \exists x \exists y (\exists p Proof (\gq{1=0}, p))$\\
+%(1) & $\exists x \mathit{Proof}(\gq{2=0},x)$ & Предположение 1\\
+%(2) & $\exists y \mathit{Proof}(\gq{2=0\rightarrow 1=0},y)$ & Предположение 2\\
+%(3..p) & $\exists x \exists y (\mathit{Proof} (\gq{2=0},x) \with \mathit{Proof}(\gq{2=0\rightarrow 1=0},y))$ & Доказуемо\\
+%(..) & Конкретное доказательство не привести, но оно существует по свойствам $\mathit{Proof}$ &\\
+%(p+1..k) & $ \exists x \exists y (\mathit{Proof} (\gq{2=0},x) \with \mathit{Proof}(\gq{2=0\rightarrow 1=0},y) \rightarrow \mathit{Proof} (\gq{1=0}, x @ y @ \gq{1=0}))$\\
+%(k+1..l) & $ \exists x \exists y (\mathit{Proof} (\gq{2=0},x) \with \mathit{Proof}(\gq{2=0\rightarrow 1=0},y) \rightarrow \exists p \mathit{Proof} (\gq{1=0}, p))$\\
+%(l+1..m) & $ \exists x \exists y (\exists p \mathit{Proof} (\gq{1=0}, p))$\\
 %\end{tabular}
 
-В случае же с $Provable1$ нам все равно необходимо показывать $\vdash \neg Provable1 (\gq{1=0})$.
+В случае же с $\mathit{Provable1}$ нам все равно необходимо показывать $\vdash \neg \mathit{Provable1} (\gq{1=0})$.
 
-Мы можем, конечно, указать общее соображение: если бы было верно $Provable1 (\gq{2=0})$, то 
+Мы можем, конечно, указать общее соображение: если бы было верно $\mathit{Provable1} (\gq{2=0})$, то 
 тогда было бы верно $\vdash 2=0$, значит, теория противоречива и найдется доказательство чего угодно, 
-в том числе и $\vdash Provable1 (\gq{1=0})$, значит, выполнено $\neg Provable1 (\gq{2=0})$.
-Но это рассуждение касается только значений формулы $Provable1$, сформулировано на мета-языке, 
-и непонятно, как из него сделать формальное доказательство $\vdash \neg Provable1 (\gq{2=0})$.
+в том числе и $\vdash \mathit{Provable1} (\gq{1=0})$, значит, выполнено $\neg \mathit{Provable1} (\gq{2=0})$.
+Но это рассуждение касается только значений формулы $\mathit{Provable1}$, сформулировано на мета-языке, 
+и непонятно, как из него сделать формальное доказательство $\vdash \neg \mathit{Provable1} (\gq{2=0})$.
 
