@@ -152,7 +152,7 @@ $n+1$ аргументу: $g(x_1, \dots, x_n, y)$.
 Функция Аккермана растет быстрее любой примитивно-рекурсивной функции. Точнее,
 какова бы ни была примитивно-рекурсивная фукнция $p: N^n \rightarrow N$, 
 мы можем подобрать такую константу $K$, что 
-$p(\overrightarrow{x}) \le \alpha_K(\max(\overrightarrow{x}))$ 
+$p(\overrightarrow{x}) \le \alpha_K(\\max(\overrightarrow{x}))$ 
 при любом $x$. 
 \end{theorem}
 
@@ -166,47 +166,47 @@ $p(\overrightarrow{x}) \le \alpha_K(\max(\overrightarrow{x}))$
 где $f, g_1, \dots g_m$ --- это некоторые примитивно-рекурсивные функции, 
 для которых по предположению индукции уже найдены требуемые константы 
 $K_0, K_1 \dots K_m$.
-Тогда возьмем $K = max (K_0 \dots K_m)+2$, и покажем, что это значение нас
+Тогда возьмем $K = \max (K_0 \dots K_m)+2$, и покажем, что это значение нас
 устроит.
 В самом деле: 
 $$p(\overrightarrow{x}) = f(g_1(\overrightarrow{x}), \dots g_m(\overrightarrow{x}))
-\le \alpha_{K_0}(max (g_1(\overrightarrow{x}), \dots g_m(\overrightarrow{x})) 
-\le \alpha_{K-2}(max (g_1(\overrightarrow{x}), \dots g_m(\overrightarrow{x}))$$
+\le \alpha_{K_0}(\max (g_1(\overrightarrow{x}), \dots g_m(\overrightarrow{x})) 
+\le \alpha_{K-2}(\max (g_1(\overrightarrow{x}), \dots g_m(\overrightarrow{x}))$$
 В свою очередь, каждый $g_i$ мы можем оценить через соответствующий $\alpha_{K_i}$:
-$$g_i(\overrightarrow{x}) \le \alpha_{K_i}(max(\overrightarrow{x})) \le \alpha_{K-2}(max(\overrightarrow{x}))$$
+$$g_i(\overrightarrow{x}) \le \alpha_{K_i}(\max(\overrightarrow{x})) \le \alpha_{K-2}(\max(\overrightarrow{x}))$$
 из чего получается, что 
-$$\alpha_{K-2}(max (g_1(\overrightarrow{x}), \dots g_m(\overrightarrow{x}))) \le 
-\alpha_{K-2}(\alpha_{K-2}(max(\overrightarrow{x}))) \le \alpha_{K-2}^{max(\overrightarrow{x})+2}(max(\overrightarrow{x}))$$
+$$\alpha_{K-2}(\max (g_1(\overrightarrow{x}), \dots g_m(\overrightarrow{x}))) \le 
+\alpha_{K-2}(\alpha_{K-2}(\max(\overrightarrow{x}))) \le \alpha_{K-2}^{\max(\overrightarrow{x})+2}(\max(\overrightarrow{x}))$$
 Применив свойство из предыдущей леммы, мы можем заключить требуемое:
-$$\alpha_{K-2}^{max(\overrightarrow{x})+2}(max(\overrightarrow{x})) < \alpha_K(max(\overrightarrow{x}))$$
+$$\alpha_{K-2}^{\max(\overrightarrow{x})+2}(\max(\overrightarrow{x})) < \alpha_K(\max(\overrightarrow{x}))$$
 
 Теперь рассмотрим примитив $R$: $p = R\langle f,g \rangle$,
 причём $f: N^{n-1} \rightarrow N$, и $g: N^{n+1} \rightarrow N$,
 и для них уже найдены константы $K_1$ и $K_2$, соответственно.
-Тогда возьмем $K = max(K_1, K_2)+2$.
+Тогда возьмем $K = \max(K_1, K_2)+2$.
 
 Для доказательства утверждения покажем чуть более сильное утверждение:
-$$p(\overrightarrow{x},y) \le \alpha_{K-2}^{y+1}(max(\overrightarrow{x},y))$$
+$$p(\overrightarrow{x},y) \le \alpha_{K-2}^{y+1}(\max(\overrightarrow{x},y))$$
 
 Этого достаточно, поскольку 
-$$\alpha_{K-2}^{y+1}(max(\overrightarrow{x},y)) \le
-\alpha_{K-2}^{max(\overrightarrow{x},y)+1}(max(\overrightarrow{x},y)) \le$$
-$$\le \alpha_{K-2}^{max(\overrightarrow{x},y)+2}(max(\overrightarrow{x},y)) <
-\alpha_K(max(\overrightarrow{x},y))$$
+$$\alpha_{K-2}^{y+1}(\max(\overrightarrow{x},y)) \le
+\alpha_{K-2}^{\max(\overrightarrow{x},y)+1}(\max(\overrightarrow{x},y)) \le$$
+$$\le \alpha_{K-2}^{\max(\overrightarrow{x},y)+2}(\max(\overrightarrow{x},y)) <
+\alpha_K(\max(\overrightarrow{x},y))$$
 
 Покажем требуемое индукцией по $y$.
 База: $y = 0$. Тогда: $$p(\overrightarrow{x},0) = f(\overrightarrow{x}) \le 
-\alpha_{K_1}(max(\overrightarrow{x})) = \alpha_{K_1}(max(\overrightarrow{x},0)) \le 
-\alpha_{K-2}(max(\overrightarrow{x},0))$$
+\alpha_{K_1}(\max(\overrightarrow{x})) = \alpha_{K_1}(\max(\overrightarrow{x},0)) \le 
+\alpha_{K-2}(\max(\overrightarrow{x},0))$$
 
-Переход: пусть $p(\overrightarrow{x},y) \le \alpha^{y+1}_{K-2}(max(\overrightarrow{x},y))$.
+Переход: пусть $p(\overrightarrow{x},y) \le \alpha^{y+1}_{K-2}(\max(\overrightarrow{x},y))$.
 Тогда $$p(\overrightarrow{x},y+1) = g(\overrightarrow{x},y,p(\overrightarrow{x},y))
-\le \alpha_{K_2}(max(\overrightarrow{x},y,p(\overrightarrow{x},y))) \le$$
-$$\le \alpha_{K_2}(max(\overrightarrow{x},y,\alpha^{y+1}_{K-2}(max(\overrightarrow{x},y))) =$$
+\le \alpha_{K_2}(\max(\overrightarrow{x},y,p(\overrightarrow{x},y))) \le$$
+$$\le \alpha_{K_2}(\max(\overrightarrow{x},y,\alpha^{y+1}_{K-2}(\max(\overrightarrow{x},y))) =$$
 \center{(тут используется монотонность $\alpha$)}
-$$= \alpha_{K_2}(\alpha^{y+1}_{K-2}(max(\overrightarrow{x},y)))
-%\le \alpha^{y+2}_{K-2}(max(\overrightarrow{x},y)))\le$$
-\le \alpha^{y+2}_{K-2}(max(\overrightarrow{x},y+1))$$
+$$= \alpha_{K_2}(\alpha^{y+1}_{K-2}(\max(\overrightarrow{x},y)))
+%\le \alpha^{y+2}_{K-2}(\max(\overrightarrow{x},y)))\le$$
+\le \alpha^{y+2}_{K-2}(\max(\overrightarrow{x},y+1))$$
 \end{proof}
 
 \begin{theorem}
@@ -338,7 +338,7 @@ $k_i = b \% u_i$ при любом $i$.
 \end{lemma}
 
 \begin{proof}
-Возьмем число $c = max(k_1,\dots k_n,n)!$. Рассмотрим числа $u_i = 1 + c \cdot (i+1)$. 
+Возьмем число $c = \max(k_1,\dots k_n,n)!$. Рассмотрим числа $u_i = 1 + c \cdot (i+1)$. 
 
 \begin{itemize}
 
