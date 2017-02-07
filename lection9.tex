@@ -233,7 +233,7 @@ $$= \alpha_{K_2}(\alpha^{y+1}_{K-2}(\max(\overrightarrow{x},y)))
 $x_1, \dots x_n$
 
 Внутри же выражения запись $\alpha (y_1, \dots y_n)$ мы будем трактовать, как 
-$\alpha [x_1 := y_1, ... x_n := y_n]$, при этом
+$\alpha [x_1 \coloneqq  y_1, ... x_n \coloneqq  y_n]$, при этом
 мы подразумеваем, что $y_1, \dots y_n$ свободны для подстановки вместо $x_1, \dots x_n$ в $\alpha$.
 
 Также, запись $B(x_1, \dots x_n) \equiv \alpha(x_1, \dots x_n)$ будет означать, что мы определяем
@@ -299,8 +299,8 @@ $\alpha (\overline{k_1}, \dots \overline{k_{n+1}})$.
 Наметим доказательство. Для этого приведем формулы, доказательство корректности этих 
 формул оставим в виде упражнения.
 \begin{itemize}
-\item Примитив $Z$ представит формула $Z (a, b) := (a=a \with b=0)$.
-\item Примитив $N$ представит формула $N (a, b) := (a' = b)$.
+\item Примитив $Z$ представит формула $Z (a, b) \coloneqq  (a=a \with b=0)$.
+\item Примитив $N$ представит формула $N (a, b) \coloneqq  (a' = b)$.
 \item Примитив $U^n_i$ представит формула $U^n_i (a_1, ...a_n, b) = (a_1=a_1) \with ... \with (a_n=a_n) \with (b= a_i)$.
 \end{itemize}
 \end{proof}
@@ -309,7 +309,7 @@ $\alpha (\overline{k_1}, \dots \overline{k_{n+1}})$.
 то функция $S\langle{}f,g_1,\dots g_m\rangle$ также представима. \end{theorem}
 \begin{proof}Поскольку функции $f$ и $g_i$ представимы, то есть формулы $F$ и $G_1, \dots G_m$,
 их представляющие. Тогда следующая формула представит $S\langle{}f,g_1,\dots g_m\rangle$: 
-$$S (a_1, \dots a_n, b) := \exists b_1 \dots \exists b_m 
+$$S (a_1, \dots a_n, b) \coloneqq  \exists b_1 \dots \exists b_m 
   (G_1 (a_1, \dots a_n, b_1) \with \dots \with G_m (a_1, \dots a_n, b_m) \with F (b_1, \dots b_m, b))$$
 \end{proof}
 
@@ -319,7 +319,7 @@ $\beta$-функция Геделя - это функция $\beta (b,c,i) = b \
 \end{definition}
 
 \begin{lemma}Функция примитивно-рекурсивна, и при этом представима в арифметике 
-формулой $B (b,c,i,d) := \exists q ((b = q \cdot (1 + c \cdot (i+1)) + d) \with (d < 1 + c \cdot (i+1)))$
+формулой $B (b,c,i,d) \coloneqq  \exists q ((b = q \cdot (1 + c \cdot (i+1)) + d) \with (d < 1 + c \cdot (i+1)))$
 \end{lemma}
 \begin{proof}Упражнение.\end{proof}
 
@@ -384,7 +384,7 @@ $\beta (b,c,i) = a_i$ для $0 \le i \le x_{n+1}$.
 Приведенные рассуждения позволяют построить следующую формулу, представляющую $R\langle{}f,g\rangle (x_1, ... x_{n+1})$:
 
 \begin{center}
-$R(x_1, \dots x_{n+1}, a) := \exists b \exists c (\exists k (B (b,c,0,k) \with F (x_1,...x_n, k))$\\
+$R(x_1, \dots x_{n+1}, a) \coloneqq  \exists b \exists c (\exists k (B (b,c,0,k) \with F (x_1,...x_n, k))$\\
        $\;\;\;\with B (b,c,x_{n+1},a)$\\
        $\;\;\;\with \forall k (k < x_{n+1} \rightarrow \exists d \exists e (B (b,c,k,d) \with B (b,c,k',e) \with
            G (x_1,..x_n,k,d,e)))$
@@ -392,7 +392,7 @@ $R(x_1, \dots x_{n+1}, a) := \exists b \exists c (\exists k (B (b,c,0,k) \with F
 
 \emph{Минимизация.} Рассмотрим конструкцию $\mu\langle{}f\rangle$. $f$ уже представлено 
 как некоторая формула $F$. Тогда формула 
-$M (x_1, \dots x_n,y) := F(x_1, \dots x_n,y,0) \with \forall z (z < y \rightarrow \neg F (x_1, \dots x_n,z,0))$
+$M (x_1, \dots x_n,y) \coloneqq  F(x_1, \dots x_n,y,0) \with \forall z (z < y \rightarrow \neg F (x_1, \dots x_n,z,0))$
 представит $\mu\langle{}f\rangle$.
 \end{proof}
 

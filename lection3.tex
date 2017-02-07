@@ -135,7 +135,7 @@ $\alpha$ также истинно.
 $\alpha$, если $x$ --- истина, и $\neg (\alpha)$, если $x$ --- ложь.
 Также, если формула $\alpha$ --- это формула с $n$ пропозициональными переменными
 $P_1 \dots P_n$, и $x_1 \dots x_n$ --- некоторые истинностные значения,
-то за $\llbracket \alpha \rrbracket^{P_1 := x_1, \dots P_n := x_n}$ обозначим значение 
+то за $\llbracket \alpha \rrbracket^{P_1 \coloneqq  x_1, \dots P_n \coloneqq  x_n}$ обозначим значение 
 формулы $\alpha$ при подстановке значений $x_1 \dots x_n$ вместо переменных $P_1 \dots P_n$.
 \end{definition}
 
@@ -335,10 +335,10 @@ $_{[x_1]} P_1, \dots _{[x_k]} P_k \vdash \alpha$.
 База. Пусть $n-k=0$, то есть $k=n$. 
 $\models \alpha$ означает, что при любой оценке 
 $x_1, \dots x_n$ пропозициональных переменных $P_1, \dots P_n$
-справедливо $\alpha [P_1 := x_1, \dots P_n := x_n] = \texttt{И}$.
+справедливо $\alpha [P_1 \coloneqq  x_1, \dots P_n \coloneqq  x_n] = \texttt{И}$.
 Возьмем некоторую оценку переменных
 $x_1, \dots x_n$. Тогда, по лемме \ref{valuation_formula},
-$_{[x_1]} P_1, \dots _{[x_{n}]} P_{n} \vdash {_{\alpha [P_1 := x_1, \dots P_n := x_n]} \alpha}$
+$_{[x_1]} P_1, \dots _{[x_{n}]} P_{n} \vdash {_{\alpha [P_1 \coloneqq  x_1, \dots P_n \coloneqq  x_n]} \alpha}$
 то есть $_{[x_1]} P_1, \dots _{[x_{n}]} P_{n} \vdash \alpha$.
 
 Переход. Пусть утверждение уже доказано для некоторого $n-k > 0$, покажем его
@@ -397,10 +397,10 @@ $\beta_1, \beta_2, \beta_3$. Подставив всех возможных ис
 
 Пусть $\alpha_{k+1}$ получается по правилу Modus Ponens из $\alpha_p$ и 
 $\alpha_q$, причем $\alpha_q \equiv \alpha_p \rightarrow \alpha_{k+1}$.
-Тогда $\llbracket\alpha_p\rrbracket^{P_1 := x_1, \dots P_n:=x_n} = \texttt{И}$ и 
-$\llbracket\alpha_p \rightarrow \alpha_{k+1}\rrbracket^{P_1:=x_1, \dots P_n:=x_n} = \texttt{И}$.
+Тогда $\llbracket\alpha_p\rrbracket^{P_1 \coloneqq  x_1, \dots P_n\coloneqq x_n} = \texttt{И}$ и 
+$\llbracket\alpha_p \rightarrow \alpha_{k+1}\rrbracket^{P_1\coloneqq x_1, \dots P_n\coloneqq x_n} = \texttt{И}$.
 Из таблицы истинности импликации следует, что неизбежно 
-$\llbracket\alpha_{k+1}\rrbracket^{P_1:=x_1, \dots P_n:=x_n} = \texttt{И}$.
+$\llbracket\alpha_{k+1}\rrbracket^{P_1\coloneqq x_1, \dots P_n\coloneqq x_n} = \texttt{И}$.
 
 \end{proof}
 
@@ -408,8 +408,8 @@ $\llbracket\alpha_{k+1}\rrbracket^{P_1:=x_1, \dots P_n:=x_n} = \texttt{И}$.
 то неизбежно найдется контрпример.
 
 %
-%$\alpha [P_1 := \texttt{И}] = \texttt{И}]$,
-%и $\alpha [P_1 := \texttt{Л}] = \texttt{И}]$.
+%$\alpha [P_1 \coloneqq  \texttt{И}] = \texttt{И}]$,
+%и $\alpha [P_1 \coloneqq  \texttt{Л}] = \texttt{И}]$.
 %Тогда, по лемме ..., справедливо $P_1 \vdash \alpha$ и $\neg P_1 \vdash \alpha$.
 %Тогда, по лемме об исключении предположения, справедливо и $\vdash \alpha$.
 %
@@ -420,7 +420,7 @@ $\llbracket\alpha_{k+1}\rrbracket^{P_1:=x_1, \dots P_n:=x_n} = \texttt{И}$.
 %
 %Тогда, если при некотором $k$ и при любой оценке $x_1, \dots x_k$
 %переменных $P_1, \dots P_k$
-%выполнено $\alpha [P_1 := x_1, \dots P_k := x_k] = \texttt{И}$, то 
+%выполнено $\alpha [P_1 \coloneqq  x_1, \dots P_k \coloneqq  x_k] = \texttt{И}$, то 
 %Тогда (по лемме ...) справедливо следующее:
 %
 %См. Стефан Клини, Математическая логика, М. <<Мир>>, 1973. Глава 1, параграф 12, стр. 61-64.
