@@ -176,17 +176,17 @@ $\gamma, \delta \vdash \alpha$, то справедливо и $\Gamma, \Delta \
 
 \end{proof}
 
-Возьмем некоторую связку исчисления высказываний, например конъюнкцию: $A \& B$.
+Возьмем некоторую связку исчисления высказываний, например конъюнкцию: $A \with B$.
 Построим для нее таблицу истинности. По каждой строчке построим утверждение,
 в котором отрицания появляются там, где в таблице истинности находится \emph{Л}:
 
 \begin{tabular}{cccc}\label{valuation_formula}
-$A$ & $B$ & $A \& B$ & утверждение\\
+$A$ & $B$ & $A \with B$ & утверждение\\
 \hline
-Л & Л & Л & $\neg A, \neg B \vdash \neg (A \& B)$\\
-Л & И & Л & $\neg A, B \vdash \neg (A \& B)$\\
-И & Л & Л & $A, \neg B \vdash \neg (A \& B)$\\
-И & И & И & $A, B \vdash A \& B$
+Л & Л & Л & $\neg A, \neg B \vdash \neg (A \with B)$\\
+Л & И & Л & $\neg A, B \vdash \neg (A \with B)$\\
+И & Л & Л & $A, \neg B \vdash \neg (A \with B)$\\
+И & И & И & $A, B \vdash A \with B$
 \end{tabular}
 
 \begin{lemma}
@@ -456,7 +456,7 @@ $\texttt{И} > \texttt{Н} > \texttt{Л}$.
 Все связки на истине и лжи действуют традиционно, необходимо описать только их
 поведение с элементом \texttt{Н}.
 Для двух операций дадим естественные обобщения.
-$A \& B = min(A,B)$, $A \vee B = max(A,B)$.
+$A \with B = min(A,B)$, $A \vee B = max(A,B)$.
 Однако, положим $\neg \texttt{Н} = \texttt{Л}$.
 Также, операцию $A \rightarrow B$ положим $\neg A \vee B$, за исключением
 $\texttt{Н} \rightarrow \texttt{Н} = \texttt{И}$
@@ -490,7 +490,7 @@ $\models P \vee \neg P$. Значит, если бы существовало д
 Определим оценку для связок интуиционистского исчисления высказываний следующим образом:
 
 \begin{tabular}{l}\\
-$\llbracket A \& B \rrbracket = \llbracket A \rrbracket \cap \llbracket B \rrbracket$\\
+$\llbracket A \with B \rrbracket = \llbracket A \rrbracket \cap \llbracket B \rrbracket$\\
 $\llbracket A \vee B \rrbracket = \llbracket A \rrbracket \cup \llbracket B \rrbracket$\\
 $\llbracket A \rightarrow B \rrbracket = (c\llbracket A \rrbracket \cup \llbracket B \rrbracket)^\circ$\\
 $\llbracket \neg A \rrbracket = (c \llbracket A \rrbracket)^\circ$

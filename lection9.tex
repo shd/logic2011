@@ -256,7 +256,7 @@ $\alpha [x_1 := y_1, ... x_n := y_n]$, при этом
 \end{definition}
 
 Например, отношение $(<)$ является выразимым в арифметике:
-Рассмотрим формулу $\alpha (a_1, a_2) = \exists b (\neg b = 0 \& a_1 + b = a_2)$.
+Рассмотрим формулу $\alpha (a_1, a_2) = \exists b (\neg b = 0 \with a_1 + b = a_2)$.
 В самом деле, если взять некоторые числа $k_1$ и $k_2$, такие, что $k_1 < k_2$, то найдется
 такое положительное число $b$, что $k_1 + b = k_2$. Можно показать, что если подставить
 $\overline{k_1}$ и $\overline{k_2}$ в $\alpha$, то формула будет доказуема. 
@@ -264,16 +264,16 @@ $\overline{k_1}$ и $\overline{k_2}$ в $\alpha$, то формула будет
 Наметим доказательство:
 Тут должно быть два доказательства по индукции, сперва по $k_2$, потом по $k_1$.
 Рассмотрим доказательство по индукции: пусть $k_1 = 0$, индукция по 2-му параметру:
-Разберем доказательство базы при $k_2 = 1$. Тогда надо показать $\exists b (\neg b = 0 \& 0 + b = 1)$:
+Разберем доказательство базы при $k_2 = 1$. Тогда надо показать $\exists b (\neg b = 0 \with 0 + b = 1)$:
 
 \begin{tabular}{lll}
-(1) & $\neg 1 = 0 \& 0 + 1 = 1$ & Несложно показать\\
-(2) & $(\neg 1 = 0 \& 0 + 1 = 1) \rightarrow \exists b (\neg b = 0 \& 0 + b = 1)$ & Cх. акс. для $\exists$\\
-(3) & $\exists b (\neg b = 0 \& 0 + b = 1)$ & M.P. 1 и 2.
+(1) & $\neg 1 = 0 \with 0 + 1 = 1$ & Несложно показать\\
+(2) & $(\neg 1 = 0 \with 0 + 1 = 1) \rightarrow \exists b (\neg b = 0 \with 0 + b = 1)$ & Cх. акс. для $\exists$\\
+(3) & $\exists b (\neg b = 0 \with 0 + b = 1)$ & M.P. 1 и 2.
 \end{tabular}
 
 \begin{definition} Введем следующее сокращение записи:
-пусть $\exists ! y \phi (y)$ означает $$\exists y \phi (y) \& \forall a \forall b (\phi(a) \& \phi(b) \rightarrow a=b)$$
+пусть $\exists ! y \phi (y)$ означает $$\exists y \phi (y) \with \forall a \forall b (\phi(a) \with \phi(b) \rightarrow a=b)$$
 Здесь $a$ и $b$ --- некоторые переменные, не входящие в формулу $\phi$ свободно.
 \end{definition}
 
@@ -299,9 +299,9 @@ $\alpha (\overline{k_1}, \dots \overline{k_{n+1}})$.
 Наметим доказательство. Для этого приведем формулы, доказательство корректности этих 
 формул оставим в виде упражнения.
 \begin{itemize}
-\item Примитив $Z$ представит формула $Z (a, b) := (a=a \& b=0)$.
+\item Примитив $Z$ представит формула $Z (a, b) := (a=a \with b=0)$.
 \item Примитив $N$ представит формула $N (a, b) := (a' = b)$.
-\item Примитив $U^n_i$ представит формула $U^n_i (a_1, ...a_n, b) = (a_1=a_1) \& ... \& (a_n=a_n) \& (b= a_i)$.
+\item Примитив $U^n_i$ представит формула $U^n_i (a_1, ...a_n, b) = (a_1=a_1) \with ... \with (a_n=a_n) \with (b= a_i)$.
 \end{itemize}
 \end{proof}
 
@@ -310,7 +310,7 @@ $\alpha (\overline{k_1}, \dots \overline{k_{n+1}})$.
 \begin{proof}Поскольку функции $f$ и $g_i$ представимы, то есть формулы $F$ и $G_1, \dots G_m$,
 их представляющие. Тогда следующая формула представит $S\langle{}f,g_1,\dots g_m\rangle$: 
 $$S (a_1, \dots a_n, b) := \exists b_1 \dots \exists b_m 
-  (G_1 (a_1, \dots a_n, b_1) \& \dots \& G_m (a_1, \dots a_n, b_m) \& F (b_1, \dots b_m, b))$$
+  (G_1 (a_1, \dots a_n, b_1) \with \dots \with G_m (a_1, \dots a_n, b_m) \with F (b_1, \dots b_m, b))$$
 \end{proof}
 
 \begin{definition}
@@ -319,7 +319,7 @@ $\beta$-функция Геделя - это функция $\beta (b,c,i) = b \
 \end{definition}
 
 \begin{lemma}Функция примитивно-рекурсивна, и при этом представима в арифметике 
-формулой $B (b,c,i,d) := \exists q ((b = q \cdot (1 + c \cdot (i+1)) + d) \& (d < 1 + c \cdot (i+1)))$
+формулой $B (b,c,i,d) := \exists q ((b = q \cdot (1 + c \cdot (i+1)) + d) \with (d < 1 + c \cdot (i+1)))$
 \end{lemma}
 \begin{proof}Упражнение.\end{proof}
 
@@ -384,15 +384,15 @@ $\beta (b,c,i) = a_i$ для $0 \le i \le x_{n+1}$.
 Приведенные рассуждения позволяют построить следующую формулу, представляющую $R\langle{}f,g\rangle (x_1, ... x_{n+1})$:
 
 \begin{center}
-$R(x_1, \dots x_{n+1}, a) := \exists b \exists c (\exists k (B (b,c,0,k) \& F (x_1,...x_n, k))$\\
-       $\;\;\;\& B (b,c,x_{n+1},a)$\\
-       $\;\;\;\& \forall k (k < x_{n+1} \rightarrow \exists d \exists e (B (b,c,k,d) \& B (b,c,k',e) \&
+$R(x_1, \dots x_{n+1}, a) := \exists b \exists c (\exists k (B (b,c,0,k) \with F (x_1,...x_n, k))$\\
+       $\;\;\;\with B (b,c,x_{n+1},a)$\\
+       $\;\;\;\with \forall k (k < x_{n+1} \rightarrow \exists d \exists e (B (b,c,k,d) \with B (b,c,k',e) \with
            G (x_1,..x_n,k,d,e)))$
 \end{center}
 
 \emph{Минимизация.} Рассмотрим конструкцию $\mu\langle{}f\rangle$. $f$ уже представлено 
 как некоторая формула $F$. Тогда формула 
-$M (x_1, \dots x_n,y) := F(x_1, \dots x_n,y,0) \& \forall z (z < y \rightarrow \neg F (x_1, \dots x_n,z,0))$
+$M (x_1, \dots x_n,y) := F(x_1, \dots x_n,y,0) \with \forall z (z < y \rightarrow \neg F (x_1, \dots x_n,z,0))$
 представит $\mu\langle{}f\rangle$.
 \end{proof}
 
@@ -408,7 +408,7 @@ $\vdash \rho(\overline{k_1}, \dots \overline{k_n}, \overline{1})$.
 Обратно, пусть $(k_1,\dots k_n) \notin R$. Из представимости $C_R$ известно
 $$\vdash \exists ! y\rho(\overline{k_1}, \dots \overline{k_n}, y)$$
 то есть, в частности,
-$$\vdash \forall y_1 \forall y_2 (\rho(\overline{k_1}, \dots \overline{k_n}, y_1) \& \rho(\overline{k_1}, \dots \overline{k_n}, y_2) \rightarrow y_1 = y_2)$$
+$$\vdash \forall y_1 \forall y_2 (\rho(\overline{k_1}, \dots \overline{k_n}, y_1) \with \rho(\overline{k_1}, \dots \overline{k_n}, y_2) \rightarrow y_1 = y_2)$$
 что можно преобразовать в
 $$\vdash \rho(\overline{k_1}, \dots \overline{k_n}, 0) \rightarrow (\rho(\overline{k_1}, \dots \overline{k_n}, \overline{1}) \rightarrow \overline{1} = 0)$$
 Поскольку $\vdash \rho(\overline{k_1}, \dots \overline{k_n}, 0)$ доказуемо вследствие представимости $C_R$,

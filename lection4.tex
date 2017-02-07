@@ -42,7 +42,7 @@ $D$ в $D$, и \emph{предикаты} --- отображающие элеме
 называть логическим выражением) --- это:
 \begin{itemize}
 \item если $\alpha$ и $\beta$ --- формулы исчисления предикатов, то 
-$\neg \alpha$, $\alpha \& \beta$, $\alpha \vee \beta$, 
+$\neg \alpha$, $\alpha \with \beta$, $\alpha \vee \beta$, 
 $\alpha \rightarrow \beta$ --- также формула. Связки расставлены
 в порядке убывания приоритета. Как и в исчислении высказываний,
 импликация правоассоциативна, остальные операции --- левоассоциативны.
@@ -197,14 +197,14 @@ $\llbracket P(\theta,y_1,\dots y_n) \rrbracket = \llbracket P(x,y_1,\dots y_n)\r
 утверждение уже доказано. Рассмотрим варианты:
 
 \begin{itemize}
-\item $\psi \equiv \alpha \rightarrow \beta$, $\psi \equiv \alpha \& \beta$, $\psi \equiv \alpha \vee \beta$ или
+\item $\psi \equiv \alpha \rightarrow \beta$, $\psi \equiv \alpha \with \beta$, $\psi \equiv \alpha \vee \beta$ или
 $\psi \equiv \neg \alpha$. Рассмотрение всех этих случаев схоже, возьмем для примера конъюнкцию.
 
 %\begin{tabular}{ll}
-$\llbracket\alpha\&\beta\rrbracket^{x:=\llbracket\theta\rrbracket}
-=\llbracket\alpha\rrbracket^{x:=\llbracket\theta\rrbracket}\&\llbracket\beta\rrbracket^{x:=\llbracket\theta\rrbracket}
-=\llbracket\alpha[x := \theta]\rrbracket\&\llbracket\beta[x:=\theta]\rrbracket
-=\llbracket\alpha[x := \theta]\&\beta[x := \theta]\rrbracket = \llbracket(\alpha\&\beta)[x := \theta]\rrbracket$
+$\llbracket\alpha\with\beta\rrbracket^{x:=\llbracket\theta\rrbracket}
+=\llbracket\alpha\rrbracket^{x:=\llbracket\theta\rrbracket}\with\llbracket\beta\rrbracket^{x:=\llbracket\theta\rrbracket}
+=\llbracket\alpha[x := \theta]\rrbracket\with\llbracket\beta[x:=\theta]\rrbracket
+=\llbracket\alpha[x := \theta]\with\beta[x := \theta]\rrbracket = \llbracket(\alpha\with\beta)[x := \theta]\rrbracket$
 %\end{tabular}
 
 \item $\psi \equiv \forall y \alpha$ или $\psi \equiv \exists y \alpha$. Опять же, рассмотрение случаев

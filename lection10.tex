@@ -6,7 +6,7 @@
 
 \begin{definition} Ограниченные кванторы $\exists_{x<y} \phi(x)$ и
 $\forall_{x<y} \phi(x)$ --- сокращения записи для выражений вида 
-$\exists x (x < y \& \phi(x))$ и $\forall x (x \ge y \vee \phi (x))$
+$\exists x (x < y \with \phi(x))$ и $\forall x (x \ge y \vee \phi (x))$
 \end{definition}
 
 \begin{theorem} Пусть $P_1$ и $P_2$ --- рекурсивные отношения.
@@ -18,7 +18,7 @@ $\exists x (x < y \& \phi(x))$ и $\forall x (x \ge y \vee \phi (x))$
 \item $E(x_1, \dots x_n,z) := \exists_{y<z} P_1(x_1,\dots x_n,y)$
 \item $P_1(x_1,\dots x_n) \rightarrow P_2(x_1,\dots x_n)$
 \item $P_1(x_1,\dots x_n) \vee P_2(x_1,\dots x_n)$
-\item $P_1(x_1,\dots x_n) \& P_2(x_1,\dots x_n)$
+\item $P_1(x_1,\dots x_n) \with P_2(x_1,\dots x_n)$
 \item $\neg P_1(x_1, \dots x_n)$
 \end{enumerate}
 \end{theorem}
@@ -39,7 +39,7 @@ $\exists x (x < y \& \phi(x))$ и $\forall x (x \ge y \vee \phi (x))$
 9 & $\neg$ \\
 11 & $\rightarrow$ \\
 13 & $\vee$ \\
-15 & $\&$ \\
+15 & $\with$ \\
 17 & $\forall$ \\
 19 & $\exists$ \\
 $21 + 6\cdot k$ & $x_k$ & переменные\\
