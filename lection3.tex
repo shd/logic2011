@@ -135,7 +135,7 @@ $\alpha$ также истинно.
 $\alpha$, если $x$ --- истина, и $\neg (\alpha)$, если $x$ --- ложь.
 Также, если формула $\alpha$ --- это формула с $n$ пропозициональными переменными
 $P_1 \dots P_n$, и $x_1 \dots x_n$ --- некоторые истинностные значения,
-то за $\llbracket \alpha \rrbracket^{P_1 := x_1, \dots P_n := x_n}$ обозначим значение 
+то за $\llbracket \alpha \rrbracket^{P_1 \coloneqq  x_1, \dots P_n \coloneqq  x_n}$ обозначим значение 
 формулы $\alpha$ при подстановке значений $x_1 \dots x_n$ вместо переменных $P_1 \dots P_n$.
 \end{definition}
 
@@ -176,17 +176,17 @@ $\gamma, \delta \vdash \alpha$, то справедливо и $\Gamma, \Delta \
 
 \end{proof}
 
-Возьмем некоторую связку исчисления высказываний, например конъюнкцию: $A \& B$.
+Возьмем некоторую связку исчисления высказываний, например конъюнкцию: $A \with B$.
 Построим для нее таблицу истинности. По каждой строчке построим утверждение,
 в котором отрицания появляются там, где в таблице истинности находится \emph{Л}:
 
 \begin{tabular}{cccc}\label{valuation_formula}
-$A$ & $B$ & $A \& B$ & утверждение\\
+$A$ & $B$ & $A \with B$ & утверждение\\
 \hline
-Л & Л & Л & $\neg A, \neg B \vdash \neg (A \& B)$\\
-Л & И & Л & $\neg A, B \vdash \neg (A \& B)$\\
-И & Л & Л & $A, \neg B \vdash \neg (A \& B)$\\
-И & И & И & $A, B \vdash A \& B$
+Л & Л & Л & $\neg A, \neg B \vdash \neg (A \with B)$\\
+Л & И & Л & $\neg A, B \vdash \neg (A \with B)$\\
+И & Л & Л & $A, \neg B \vdash \neg (A \with B)$\\
+И & И & И & $A, B \vdash A \with B$
 \end{tabular}
 
 \begin{lemma}
@@ -335,10 +335,10 @@ $_{[x_1]} P_1, \dots _{[x_k]} P_k \vdash \alpha$.
 База. Пусть $n-k=0$, то есть $k=n$. 
 $\models \alpha$ означает, что при любой оценке 
 $x_1, \dots x_n$ пропозициональных переменных $P_1, \dots P_n$
-справедливо $\alpha [P_1 := x_1, \dots P_n := x_n] = \texttt{И}$.
+справедливо $\alpha [P_1 \coloneqq  x_1, \dots P_n \coloneqq  x_n] = \texttt{И}$.
 Возьмем некоторую оценку переменных
 $x_1, \dots x_n$. Тогда, по лемме \ref{valuation_formula},
-$_{[x_1]} P_1, \dots _{[x_{n}]} P_{n} \vdash {_{\alpha [P_1 := x_1, \dots P_n := x_n]} \alpha}$
+$_{[x_1]} P_1, \dots _{[x_{n}]} P_{n} \vdash {_{\alpha [P_1 \coloneqq  x_1, \dots P_n \coloneqq  x_n]} \alpha}$
 то есть $_{[x_1]} P_1, \dots _{[x_{n}]} P_{n} \vdash \alpha$.
 
 Переход. Пусть утверждение уже доказано для некоторого $n-k > 0$, покажем его
@@ -397,10 +397,10 @@ $\beta_1, \beta_2, \beta_3$. Подставив всех возможных ис
 
 Пусть $\alpha_{k+1}$ получается по правилу Modus Ponens из $\alpha_p$ и 
 $\alpha_q$, причем $\alpha_q \equiv \alpha_p \rightarrow \alpha_{k+1}$.
-Тогда $\llbracket\alpha_p\rrbracket^{P_1 := x_1, \dots P_n:=x_n} = \texttt{И}$ и 
-$\llbracket\alpha_p \rightarrow \alpha_{k+1}\rrbracket^{P_1:=x_1, \dots P_n:=x_n} = \texttt{И}$.
+Тогда $\llbracket\alpha_p\rrbracket^{P_1 \coloneqq  x_1, \dots P_n\coloneqq x_n} = \texttt{И}$ и 
+$\llbracket\alpha_p \rightarrow \alpha_{k+1}\rrbracket^{P_1\coloneqq x_1, \dots P_n\coloneqq x_n} = \texttt{И}$.
 Из таблицы истинности импликации следует, что неизбежно 
-$\llbracket\alpha_{k+1}\rrbracket^{P_1:=x_1, \dots P_n:=x_n} = \texttt{И}$.
+$\llbracket\alpha_{k+1}\rrbracket^{P_1\coloneqq x_1, \dots P_n\coloneqq x_n} = \texttt{И}$.
 
 \end{proof}
 
@@ -408,8 +408,8 @@ $\llbracket\alpha_{k+1}\rrbracket^{P_1:=x_1, \dots P_n:=x_n} = \texttt{И}$.
 то неизбежно найдется контрпример.
 
 %
-%$\alpha [P_1 := \texttt{И}] = \texttt{И}]$,
-%и $\alpha [P_1 := \texttt{Л}] = \texttt{И}]$.
+%$\alpha [P_1 \coloneqq  \texttt{И}] = \texttt{И}]$,
+%и $\alpha [P_1 \coloneqq  \texttt{Л}] = \texttt{И}]$.
 %Тогда, по лемме ..., справедливо $P_1 \vdash \alpha$ и $\neg P_1 \vdash \alpha$.
 %Тогда, по лемме об исключении предположения, справедливо и $\vdash \alpha$.
 %
@@ -420,7 +420,7 @@ $\llbracket\alpha_{k+1}\rrbracket^{P_1:=x_1, \dots P_n:=x_n} = \texttt{И}$.
 %
 %Тогда, если при некотором $k$ и при любой оценке $x_1, \dots x_k$
 %переменных $P_1, \dots P_k$
-%выполнено $\alpha [P_1 := x_1, \dots P_k := x_k] = \texttt{И}$, то 
+%выполнено $\alpha [P_1 \coloneqq  x_1, \dots P_k \coloneqq  x_k] = \texttt{И}$, то 
 %Тогда (по лемме ...) справедливо следующее:
 %
 %См. Стефан Клини, Математическая логика, М. <<Мир>>, 1973. Глава 1, параграф 12, стр. 61-64.
@@ -456,7 +456,7 @@ $\texttt{И} > \texttt{Н} > \texttt{Л}$.
 Все связки на истине и лжи действуют традиционно, необходимо описать только их
 поведение с элементом \texttt{Н}.
 Для двух операций дадим естественные обобщения.
-$A \& B = min(A,B)$, $A \vee B = max(A,B)$.
+$A \with B = \min(A,B)$, $A \vee B = \max(A,B)$.
 Однако, положим $\neg \texttt{Н} = \texttt{Л}$.
 Также, операцию $A \rightarrow B$ положим $\neg A \vee B$, за исключением
 $\texttt{Н} \rightarrow \texttt{Н} = \texttt{И}$
@@ -490,7 +490,7 @@ $\models P \vee \neg P$. Значит, если бы существовало д
 Определим оценку для связок интуиционистского исчисления высказываний следующим образом:
 
 \begin{tabular}{l}\\
-$\llbracket A \& B \rrbracket = \llbracket A \rrbracket \cap \llbracket B \rrbracket$\\
+$\llbracket A \with B \rrbracket = \llbracket A \rrbracket \cap \llbracket B \rrbracket$\\
 $\llbracket A \vee B \rrbracket = \llbracket A \rrbracket \cup \llbracket B \rrbracket$\\
 $\llbracket A \rightarrow B \rrbracket = (c\llbracket A \rrbracket \cup \llbracket B \rrbracket)^\circ$\\
 $\llbracket \neg A \rrbracket = (c \llbracket A \rrbracket)^\circ$

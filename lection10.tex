@@ -6,7 +6,7 @@
 
 \begin{definition} Ограниченные кванторы $\exists_{x<y} \phi(x)$ и
 $\forall_{x<y} \phi(x)$ --- сокращения записи для выражений вида 
-$\exists x (x < y \& \phi(x))$ и $\forall x (x \ge y \vee \phi (x))$
+$\exists x (x < y \with \phi(x))$ и $\forall x (x \ge y \vee \phi (x))$
 \end{definition}
 
 \begin{theorem} Пусть $P_1$ и $P_2$ --- рекурсивные отношения.
@@ -14,11 +14,11 @@ $\exists x (x < y \& \phi(x))$ и $\forall x (x \ge y \vee \phi (x))$
 рекурсивными отношениями:
 
 \begin{enumerate}
-\item $F(x_1,\dots x_n,z) := \forall_{y<z} P_1(x_1,\dots x_n,y)$
-\item $E(x_1, \dots x_n,z) := \exists_{y<z} P_1(x_1,\dots x_n,y)$
+\item $F(x_1,\dots x_n,z) \coloneqq  \forall_{y<z} P_1(x_1,\dots x_n,y)$
+\item $E(x_1, \dots x_n,z) \coloneqq  \exists_{y<z} P_1(x_1,\dots x_n,y)$
 \item $P_1(x_1,\dots x_n) \rightarrow P_2(x_1,\dots x_n)$
 \item $P_1(x_1,\dots x_n) \vee P_2(x_1,\dots x_n)$
-\item $P_1(x_1,\dots x_n) \& P_2(x_1,\dots x_n)$
+\item $P_1(x_1,\dots x_n) \with P_2(x_1,\dots x_n)$
 \item $\neg P_1(x_1, \dots x_n)$
 \end{enumerate}
 \end{theorem}
@@ -39,7 +39,7 @@ $\exists x (x < y \& \phi(x))$ и $\forall x (x \ge y \vee \phi (x))$
 9 & $\neg$ \\
 11 & $\rightarrow$ \\
 13 & $\vee$ \\
-15 & $\&$ \\
+15 & $\with$ \\
 17 & $\forall$ \\
 19 & $\exists$ \\
 $21 + 6\cdot k$ & $x_k$ & переменные\\
@@ -61,9 +61,9 @@ $f_0^1 \equiv (')$, $f_0^2 \equiv (+)$, $f_1^2 \equiv (\cdot)$, $P_0^2 \equiv (=
 $t = p_1^{c_1} \cdot p_2^{c_2} \cdot \dots \cdot p_n^{c_n}$. Ясно, что такое представление
 однозначно позволяет установить длину строки (гёделева нумерация не содержит 0, поэтому
 можно определить длину строки как максимальный номер простого числа, на которое делится $t$;
-будем записывать эту функцию как $Len(s)$),
+будем записывать эту функцию как $\mathit{Len}(s)$),
 и каждый символ строки в отдельности (будем записывать функцию как $(s)_n$).
-Также ясно, что функции $Len$ и $(x)_n$ --- рекурсивны.
+Также ясно, что функции $\mathit{Len}$ и $(x)_n$ --- рекурсивны.
 
 Чтобы удобнее работать со строками, введем следующие обозначения, за которыми скрываются
 рекурсивные функции:
@@ -93,28 +93,28 @@ $p_1^{s_1} \cdot \dots \cdot p_n^{s_n} \cdot p_{n+1}^{t_1} \cdot \dots \cdot p_{
 
 \begin{itemize}
 \item Проверка того, что a - строка, состоящая только из переменной.
-$Var(a) \equiv \exists_{z < a} (a = 2 ^ {21 + 6\cdot z})$
+$\mathit{Var}(a) \equiv \exists_{z < a} (a = 2 ^ {21 + 6\cdot z})$
 
 \item Проверка того, что выражение с номером $a$ получено из выражений $b$ и $c$ 
 путем применения правила Modus Ponens.
-$MP (b,c,a) \equiv c = \gq{(} ~@~ b ~@~ \gq{\rightarrow} ~@~ a ~@~ \gq{)}$
+$\mathit{MP} (b,c,a) \equiv c = \gq{(} ~@~ b ~@~ \gq{\rightarrow} ~@~ a ~@~ \gq{)}$
 
 \item Проверка того, что $b$ получается из $a$ подстановкой $y$ вместо $x$:
-$Subst (a,b,x,y)$ --- без реализации
+$\mathit{Subst} (a,b,x,y)$ --- без реализации
 
 \item Функция, подставляющая $y$ вместо $x$ в формуле $a$:\\
-$Sub (a,x,y) \equiv \mu \langle{}S\langle{}Subst,U^4_1,U^4_4,U^4_2,U^4_3\rangle\rangle(a,x,y)$
+$\mathit{Sub} (a,x,y) \equiv \mu \langle{}S\langle{}\mathit{Subst},U^4_1,U^4_4,U^4_2,U^4_3\rangle\rangle(a,x,y)$
 
 \item Проверка того, что переменная номер $x$ входит свободно в формулу $f$.\\
-$Free (f,x) \equiv \neg Subst(a,a,x,21 + 6x)$
+$\mathit{Free} (f,x) \equiv \neg \mathit{Subst}(a,a,x,21 + 6x)$
 
 \item Функция, выдающая гёделев номер выражения, соответствующего целому числу:
-$Num \equiv S\langle{}R\langle{}\gq{0},S\langle{}@,U^3_3,S\langle{}\gq{'},U^3_1\rangle{}\rangle{}\rangle,U^1_1,U^1_1\rangle{}$
+$\mathit{Num} \equiv S\langle{}R\langle{}\gq{0},S\langle{}@,U^3_3,S\langle{}\gq{'},U^3_1\rangle{}\rangle{}\rangle,U^1_1,U^1_1\rangle{}$
 
 \end{itemize}
 
 Путем некоторых усилий мы можем выписать формулу, представляющую
-двуместное отношение $Proof(f,p)$, истинное тогда и только тогда, когда
+двуместное отношение $\mathit{Proof}(f,p)$, истинное тогда и только тогда, когда
 $p$ --- гёделев номер доказательства формулы с гёделевым номером $f$.
 
 \begin{theorem}
