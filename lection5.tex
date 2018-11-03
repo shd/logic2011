@@ -68,7 +68,7 @@ $(l+1)$ & $(\alpha \rightarrow \beta \with \neg\beta) \rightarrow (\neg\alpha\ri
 $(l+2)$ & $(\neg\alpha\rightarrow \beta \with \neg\beta) \rightarrow (\alpha\vee\neg\alpha\rightarrow \beta \with \neg\beta)$ & M.P. $k$,$l+1$\\
 $(l+3)$ & $\alpha\vee\neg\alpha\rightarrow \beta \with \neg\beta$ & M.P. $l$,$l+2$\\
 $(l+4 \dots m)$ & $\alpha\vee\neg\alpha$ & Лемма \ref{excluded_third}\\
-$(m+1)$ & $\beta \with \neg\beta$ & M.P. $l+3$,$m$
+$(m+1)$ & $\beta \with \neg\beta$ & M.P. $m$,$l+3$
 \end{tabular}
 
 Таким образом, имея доказательства противоречивости $\Gamma,\alpha$ и
@@ -210,8 +210,8 @@ $\llbracket \beta \rrbracket = \texttt{Л}$ рассматривается ан�
 (3) & $\alpha\with\beta \rightarrow \neg\alpha$ & M.P. 1,2\\
 (4) & $\alpha \with \beta \rightarrow \alpha$ & Сх. акс. 4\\
 (5) & $(\alpha \with \beta \rightarrow \alpha) \rightarrow (\alpha \with \beta \rightarrow \neg\alpha) \rightarrow \neg(\alpha \with \beta)$ & Сх. акс. 9\\
-(6) & $(\alpha \with \beta \rightarrow \neg\alpha) \rightarrow \neg(\alpha \with \beta)$ & M.P. 5,4\\
-(7) & $\neg(\alpha \with \beta)$ & M.P. 6,3
+(6) & $(\alpha \with \beta \rightarrow \neg\alpha) \rightarrow \neg(\alpha \with \beta)$ & M.P. 4,5\\
+(7) & $\neg(\alpha \with \beta)$ & M.P. 3,6
 \end{tabular}
 
 Значит, невозможно, чтобы $\alpha\with\beta \in \Gamma$, поскольку иначе
