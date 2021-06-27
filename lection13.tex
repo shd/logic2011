@@ -10,7 +10,7 @@
 
 \begin{definition}{Эквивалентность.}
 Запись $a \leftrightarrow b$ является сокращением записи для 
-$ \equiv a \rightarrow b \with b \rightarrow a$.
+$ \equiv ( a \rightarrow b) \with (b \rightarrow a)$.
 \end{definition}
 
 \begin{definition}Будем говорить, что множество $x$ является подмножеством
@@ -19,9 +19,13 @@ $ \equiv a \rightarrow b \with b \rightarrow a$.
 $\forall z (z \in x \rightarrow z \in y)$.
 \end{definition}
 
-\begin{definition}{Принцип объемности.}Два множества называются
-равными, если они являются подмножествами друг друга. Формально:
+\begin{definition}{Принцип объемности.}
+Два множества называются равными, если они являются подмножествами друг друга. Формально:
 $x = y$ является сокращением записи для $x \subseteq y \with y \subseteq x$.
+\end{definition}
+
+\begin{definition}{Принцип Лейбница (неразличимость).}
+Два множества называются равными, если для любого предиката $P$ $P(A) \leftrightarrow P(B)$.
 \end{definition}
 
 \begin{axiom}{Аксиома равенства.}
@@ -39,7 +43,7 @@ $\forall x \forall y (\neg x=y \rightarrow \exists p (x \in p \with y \in p \wit
 \begin{axiom}{Аксиома объединения.}
 Для любого множества $x$, содержащего хотя бы один элемент, найдется такое множество, которое состоит в точности
 из тех элементов, из которых состоят элементы $x$. Будем записывать его так: $\cup x$.
-Формально: $\forall x (\exists y y \in x \rightarrow \exists p \forall y (y \in p \leftrightarrow \exists s (y \in s \with s \in x)))$
+Формально: $\forall x (\exists y y \in x) \rightarrow \exists p \forall y (y \in p \leftrightarrow \exists s (y \in s \with s \in x))$
 \end{axiom}
 
 \begin{axiom}{Аксиома степени.}
