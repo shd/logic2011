@@ -181,7 +181,7 @@ $\gamma, \delta \vdash \alpha$, то справедливо и $\Gamma, \Delta \
 Построим для нее таблицу истинности. По каждой строчке построим утверждение,
 в котором отрицания появляются там, где в таблице истинности находится \emph{Л}:
 
-\begin{tabular}{cccc}\label{valuation_formula}
+\begin{tabular}{cccc}
 $A$ & $B$ & $A \with B$ & утверждение\\
 \hline
 Л & Л & Л & $\neg A, \neg B \vdash \neg (A \with B)$\\
@@ -190,7 +190,7 @@ $A$ & $B$ & $A \with B$ & утверждение\\
 И & И & И & $A, B \vdash A \with B$
 \end{tabular}
 
-\begin{lemma}
+\begin{lemma}\label{valuation_formula}
 Каждое из построенных по таблицам истинности утверждений доказуемо.
 \end{lemma}
 \begin{proof} Упражнение.
