@@ -180,7 +180,7 @@ $\gamma, \delta \vdash \alpha$, то справедливо и $\Gamma, \Delta \
 Построим для нее таблицу истинности. По каждой строчке построим утверждение,
 в котором отрицания появляются там, где в таблице истинности находится \emph{Л}:
 
-\begin{tabular}{cccc}\label{valuation_formula}
+\begin{tabular}{cccc}
 $A$ & $B$ & $A \with B$ & утверждение\\
 \hline
 Л & Л & Л & $\neg A, \neg B \vdash \neg (A \with B)$\\
@@ -189,6 +189,7 @@ $A$ & $B$ & $A \with B$ & утверждение\\
 И & И & И & $A, B \vdash A \with B$
 \end{tabular}
 
+\label{valuation_formula}
 \begin{lemma}
 Каждое из построенных по таблицам истинности утверждений доказуемо.
 \end{lemma}
@@ -337,7 +338,7 @@ $\models \alpha$ означает, что при любой оценке
 $x_1, \dots x_n$ пропозициональных переменных $P_1, \dots P_n$
 справедливо $\alpha [P_1 \coloneqq  x_1, \dots P_n \coloneqq  x_n] = \texttt{И}$.
 Возьмем некоторую оценку переменных
-$x_1, \dots x_n$. Тогда, по лемме \hyperref[valuation_formula]{4.2},
+$x_1, \dots x_n$. Тогда, по лемме \ref{valuation_formula},
 $_{[x_1]} P_1, \dots _{[x_{n}]} P_{n} \vdash {_{\alpha [P_1 \coloneqq  x_1, \dots P_n \coloneqq  x_n]} \alpha}$
 то есть $_{[x_1]} P_1, \dots _{[x_{n}]} P_{n} \vdash \alpha$.
 
